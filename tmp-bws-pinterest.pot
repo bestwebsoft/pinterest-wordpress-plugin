@@ -1,0 +1,1076 @@
+# Copyright (C) 2016 Pinterest by BestWebSoft
+# This file is distributed under the same license as the Pinterest by BestWebSoft package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pinterest by BestWebSoft 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bws-pinterest\n"
+"POT-Creation-Date: 2016-04-25 06:50:50+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: bws-pinterest.php:34
+msgid "Pinterest"
+msgstr ""
+
+#: bws-pinterest.php:130
+msgid "Follow me"
+msgstr ""
+
+#: bws-pinterest.php:181
+msgid ""
+"Please, enter \"Pinterest user URL\" to add Follow Button. Settings are not "
+"saved."
+msgstr ""
+
+#: bws-pinterest.php:203
+msgid "Error: File size %1s"
+msgstr ""
+
+#: bws-pinterest.php:206
+msgid "Error: Invalid file type"
+msgstr ""
+
+#: bws-pinterest.php:218
+msgid "Error: moving file failed"
+msgstr ""
+
+#: bws-pinterest.php:224
+msgid "Error: select the upload file"
+msgstr ""
+
+#: bws-pinterest.php:228
+msgid "Settings saved"
+msgstr ""
+
+#: bws-pinterest.php:235
+msgid "All plugin settings were restored."
+msgstr ""
+
+#: bws-pinterest.php:238
+msgid "Pinterest Settings"
+msgstr ""
+
+#: bws-pinterest.php:240 bws-pinterest.php:937 bws-pinterest.php:953
+#: bws_menu/bws_menu.php:680 bws_menu/bws_menu.php:729
+msgid "Settings"
+msgstr ""
+
+#: bws-pinterest.php:241
+msgid "Custom code"
+msgstr ""
+
+#: bws-pinterest.php:257
+msgid ""
+"If you would like to add Pinterest buttons or widgets to your page or post, "
+"please use %s button"
+msgstr ""
+
+#: bws-pinterest.php:262
+msgid ""
+"You can add buttons or widgets to your content by clicking on %1s button in "
+"the content edit block using the Visual mode. If the button isn't displayed, "
+"please use the shortcode %2s for Pin It button, %3s for Follow button or %4s "
+"for Pinteresr widget"
+msgstr ""
+
+#: bws-pinterest.php:274
+msgid "Pinterest user URL"
+msgstr ""
+
+#: bws-pinterest.php:279
+msgid "Example"
+msgstr ""
+
+#: bws-pinterest.php:286
+msgid "Settings for Pin It Button"
+msgstr ""
+
+#: bws-pinterest.php:291
+msgid "Pin It Button place"
+msgstr ""
+
+#: bws-pinterest.php:294 bws-pinterest.php:379
+msgid "Before the content"
+msgstr ""
+
+#: bws-pinterest.php:295 bws-pinterest.php:380
+msgid "After the content"
+msgstr ""
+
+#: bws-pinterest.php:296
+msgid "On image hover"
+msgstr ""
+
+#: bws-pinterest.php:302
+msgid "Button image type"
+msgstr ""
+
+#: bws-pinterest.php:305
+msgid "Default"
+msgstr ""
+
+#: bws-pinterest.php:306
+msgid "Custom"
+msgstr ""
+
+#: bws-pinterest.php:312
+msgid "Max image size: %1s. Allowed file extensions: %2s"
+msgstr ""
+
+#: bws-pinterest.php:319
+msgid "Current custom image"
+msgstr ""
+
+#: bws-pinterest.php:327
+msgid "Button Shape"
+msgstr ""
+
+#: bws-pinterest.php:330
+msgid "Square"
+msgstr ""
+
+#: bws-pinterest.php:331
+msgid "Round"
+msgstr ""
+
+#: bws-pinterest.php:337
+msgid "Button Size"
+msgstr ""
+
+#: bws-pinterest.php:340 bws-pinterest.php:643 bws-pinterest.php:805
+msgid "Small"
+msgstr ""
+
+#: bws-pinterest.php:341 bws-pinterest.php:645 bws-pinterest.php:807
+msgid "Large"
+msgstr ""
+
+#: bws-pinterest.php:347
+msgid "Button Color"
+msgstr ""
+
+#: bws-pinterest.php:350
+msgid "Red"
+msgstr ""
+
+#: bws-pinterest.php:351
+msgid "Gray"
+msgstr ""
+
+#: bws-pinterest.php:352
+msgid "White"
+msgstr ""
+
+#: bws-pinterest.php:354 bws-pinterest.php:366
+msgid "Works only if the square image is chosen"
+msgstr ""
+
+#: bws-pinterest.php:359
+msgid "Pin Counts"
+msgstr ""
+
+#: bws-pinterest.php:362
+msgid "None"
+msgstr ""
+
+#: bws-pinterest.php:363
+msgid "Above the button"
+msgstr ""
+
+#: bws-pinterest.php:364
+msgid "Beside the button"
+msgstr ""
+
+#: bws-pinterest.php:372
+msgid "Settings for Follow Button"
+msgstr ""
+
+#: bws-pinterest.php:376
+msgid "Follow Button place"
+msgstr ""
+
+#: bws-pinterest.php:386
+msgid "Follow Button label"
+msgstr ""
+
+#: bws-pinterest.php:394 bws_menu/bws_functions.php:771
+#: bws_menu/bws_functions.php:1252
+msgid "Save Changes"
+msgstr ""
+
+#: bws-pinterest.php:550
+msgid "Pinterest Widget"
+msgstr ""
+
+#: bws-pinterest.php:553
+msgid "Widget for adding Pinterest Pin, Board and Profile widgets"
+msgstr ""
+
+#: bws-pinterest.php:617
+msgid "Title"
+msgstr ""
+
+#: bws-pinterest.php:622
+msgid "Type"
+msgstr ""
+
+#: bws-pinterest.php:624 bws-pinterest.php:634 bws-pinterest.php:780
+msgid "Pin Widget"
+msgstr ""
+
+#: bws-pinterest.php:625 bws-pinterest.php:635 bws-pinterest.php:781
+msgid "Board Widget"
+msgstr ""
+
+#: bws-pinterest.php:626 bws-pinterest.php:782
+msgid "Profile Widget"
+msgstr ""
+
+#: bws-pinterest.php:630 bws-pinterest.php:798
+msgid "URL"
+msgstr ""
+
+#: bws-pinterest.php:633
+msgid "Examples"
+msgstr ""
+
+#: bws-pinterest.php:641 bws-pinterest.php:803
+msgid "Size"
+msgstr ""
+
+#: bws-pinterest.php:644 bws-pinterest.php:806
+msgid "Medium"
+msgstr ""
+
+#: bws-pinterest.php:649 bws-pinterest.php:812
+msgid "Width"
+msgstr ""
+
+#: bws-pinterest.php:653 bws-pinterest.php:661
+msgid "Min width%1s. If emtpy width: auto"
+msgstr ""
+
+#: bws-pinterest.php:665 bws-pinterest.php:813
+msgid "Height"
+msgstr ""
+
+#: bws-pinterest.php:668 bws-pinterest.php:672
+msgid "Min height"
+msgstr ""
+
+#: bws-pinterest.php:673 bws-pinterest.php:814
+msgid "Thumbnails width"
+msgstr ""
+
+#: bws-pinterest.php:677 bws-pinterest.php:685
+msgid ""
+"Min width%1s. If the widget width field is empty, the thumbnail width will "
+"be auto."
+msgstr ""
+
+#: bws-pinterest.php:776
+msgid "Shortcode Type"
+msgstr ""
+
+#: bws-pinterest.php:778
+msgid "Follow Button"
+msgstr ""
+
+#: bws-pinterest.php:779
+msgid "Pin It button"
+msgstr ""
+
+#: bws-pinterest.php:786
+msgid "Button label"
+msgstr ""
+
+#: bws-pinterest.php:790
+msgid "Save any image"
+msgstr ""
+
+#: bws-pinterest.php:791
+msgid "Save defined image"
+msgstr ""
+
+#: bws-pinterest.php:792
+msgid "Pin image URL"
+msgstr ""
+
+#: bws-pinterest.php:793
+msgid "Custom button image"
+msgstr ""
+
+#: bws-pinterest.php:794
+msgid "Custom image URL"
+msgstr ""
+
+#: bws-pinterest.php:938 bws_menu/bws_functions.php:1147
+msgid "FAQ"
+msgstr ""
+
+#: bws-pinterest.php:939
+msgid "Support"
+msgstr ""
+
+#: bws_menu/bws_functions.php:67 bws_menu/bws_functions.php:91
+msgid "requires"
+msgstr ""
+
+#: bws_menu/bws_functions.php:69
+msgid ""
+"or higher, that is why it has been deactivated! Please upgrade WordPress and "
+"try again."
+msgstr ""
+
+#: bws_menu/bws_functions.php:70
+msgid "Back to the WordPress"
+msgstr ""
+
+#: bws_menu/bws_functions.php:72
+msgid "Plugins page"
+msgstr ""
+
+#: bws_menu/bws_functions.php:93
+msgid ""
+"or higher! We do not guarantee that our plugin will work correctly. Please "
+"upgrade to WordPress latest version."
+msgstr ""
+
+#: bws_menu/bws_functions.php:145 bws_menu/bws_functions.php:654
+#: bws_menu/bws_functions.php:698 bws_menu/bws_functions.php:757
+msgid "Close notice"
+msgstr ""
+
+#: bws_menu/bws_functions.php:150
+msgid "It’s time to upgrade your"
+msgstr ""
+
+#: bws_menu/bws_functions.php:150
+msgid "to"
+msgstr ""
+
+#: bws_menu/bws_functions.php:150
+msgid "version!"
+msgstr ""
+
+#: bws_menu/bws_functions.php:151
+msgid "Extend standard plugin functionality with new great options."
+msgstr ""
+
+#: bws_menu/bws_functions.php:154 bws_menu/bws_functions.php:595
+#: bws_menu/bws_menu.php:927
+msgid "Learn More"
+msgstr ""
+
+#: bws_menu/bws_functions.php:171
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr ""
+
+#: bws_menu/bws_functions.php:172
+msgid "Rate the plugin"
+msgstr ""
+
+#: bws_menu/bws_functions.php:175
+msgid "If there is something wrong about it, please contact us"
+msgstr ""
+
+#: bws_menu/bws_functions.php:207
+msgid "Check premium options on the plugin settings page!"
+msgstr ""
+
+#: bws_menu/bws_functions.php:214 bws_menu/bws_functions.php:250
+msgid "Wrong license key"
+msgstr ""
+
+#: bws_menu/bws_functions.php:244 bws_menu/bws_functions.php:508
+#: bws_menu/bws_functions.php:559
+msgid ""
+"Something went wrong. Please try again later. If the error appears again, "
+"please contact us"
+msgstr ""
+
+#: bws_menu/bws_functions.php:244 bws_menu/bws_functions.php:508
+#: bws_menu/bws_functions.php:559
+msgid "We are sorry for inconvenience."
+msgstr ""
+
+#: bws_menu/bws_functions.php:252
+msgid "This license key is bind to another site"
+msgstr ""
+
+#: bws_menu/bws_functions.php:254 bws_menu/bws_functions.php:418
+msgid ""
+"Unfortunately, you have exceeded the number of available tries per day. "
+"Please, upload the plugin manually."
+msgstr ""
+
+#: bws_menu/bws_functions.php:256
+msgid ""
+"Unfortunately, Your license has expired. To continue getting top-priority "
+"support and plugin updates you should extend it in your"
+msgstr ""
+
+#: bws_menu/bws_functions.php:258
+msgid ""
+"Unfortunately, the Pro licence was already installed to this domain. The Pro "
+"Trial license can be installed only once."
+msgstr ""
+
+#: bws_menu/bws_functions.php:279 bws_menu/bws_functions.php:301
+#: bws_menu/bws_functions.php:323
+msgid "Failed to download the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: bws_menu/bws_functions.php:291
+msgid "Failed to open the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: bws_menu/bws_functions.php:297
+msgid ""
+"Your server does not support either ZipArchive or Phar. Please, upload the "
+"plugin manually"
+msgstr ""
+
+#: bws_menu/bws_functions.php:304
+msgid "UploadDir is not writable. Please, upload the plugin manually"
+msgstr ""
+
+#: bws_menu/bws_functions.php:327
+msgid ""
+"Something went wrong. Try again later or upload the plugin manually. We are "
+"sorry for inconvenience."
+msgstr ""
+
+#: bws_menu/bws_functions.php:352
+msgid "Please, enter Your license key"
+msgstr ""
+
+#: bws_menu/bws_functions.php:382
+msgid ""
+"Congratulations! The Pro version of the plugin is successfully download and "
+"activated."
+msgstr ""
+
+#: bws_menu/bws_functions.php:384 bws_menu/bws_functions.php:475
+msgid "Please, go to"
+msgstr ""
+
+#: bws_menu/bws_functions.php:384 bws_menu/bws_functions.php:475
+msgid "the setting page"
+msgstr ""
+
+#: bws_menu/bws_functions.php:385 bws_menu/bws_functions.php:476
+msgid "You will be redirected automatically in 5 seconds."
+msgstr ""
+
+#: bws_menu/bws_functions.php:392
+msgid "Show Pro features"
+msgstr ""
+
+#: bws_menu/bws_functions.php:399
+msgid "You can download and activate"
+msgstr ""
+
+#: bws_menu/bws_functions.php:401
+msgid "version of this plugin by entering Your license key."
+msgstr ""
+
+#: bws_menu/bws_functions.php:403 bws_menu/bws_functions.php:444
+msgid ""
+"You can find your license key on your personal page Client area, by clicking "
+"on the link"
+msgstr ""
+
+#: bws_menu/bws_functions.php:405 bws_menu/bws_functions.php:446
+msgid "(your username is the email you specify when purchasing the product)."
+msgstr ""
+
+#: bws_menu/bws_functions.php:409 bws_menu/bws_functions.php:693
+msgid "or"
+msgstr ""
+
+#: bws_menu/bws_functions.php:409
+msgid "Start Your Free %s-Day Trial Now"
+msgstr ""
+
+#: bws_menu/bws_functions.php:415 bws_menu/bws_functions.php:424
+#: bws_menu/bws_functions.php:454 bws_menu/bws_functions.php:462
+#: bws_menu/bws_functions.php:1244 bws_menu/bws_menu.php:701
+#: bws_menu/bws_menu.php:758
+msgid "Activate"
+msgstr ""
+
+#: bws_menu/bws_functions.php:441 bws_menu/bws_functions.php:534
+msgid ""
+"In order to continue using the plugin it is necessary to buy a %s license."
+msgstr ""
+
+#: bws_menu/bws_functions.php:442
+msgid "After that you can activate it by entering your license key."
+msgstr ""
+
+#: bws_menu/bws_functions.php:456
+msgid "Unfortunately, you have exceeded the number of available tries per day."
+msgstr ""
+
+#: bws_menu/bws_functions.php:473
+msgid ""
+"Congratulations! The Pro license of the plugin is successfully activated."
+msgstr ""
+
+#: bws_menu/bws_functions.php:514
+msgid "Wrong license key."
+msgstr ""
+
+#: bws_menu/bws_functions.php:516
+msgid "This license key is bind to another site."
+msgstr ""
+
+#: bws_menu/bws_functions.php:518
+msgid ""
+"This license key is valid, but Your license has expired. If you want to "
+"update our plugin in future, you should extend the license."
+msgstr ""
+
+#: bws_menu/bws_functions.php:520
+msgid "Unfortunately, you have exceeded the number of available tries."
+msgstr ""
+
+#: bws_menu/bws_functions.php:522
+msgid ""
+"Unfortunately, the Pro Trial licence was already installed to this domain. "
+"The Pro Trial license can be installed only once."
+msgstr ""
+
+#: bws_menu/bws_functions.php:526
+msgid "The Pro Trial license key is valid."
+msgstr ""
+
+#: bws_menu/bws_functions.php:528
+msgid "The license key is valid."
+msgstr ""
+
+#: bws_menu/bws_functions.php:531
+msgid "Your license will expire on"
+msgstr ""
+
+#: bws_menu/bws_functions.php:564
+msgid "Please, enter your license key"
+msgstr ""
+
+#: bws_menu/bws_functions.php:577
+msgid ""
+"If needed you can check if the license key is correct or reenter it in the "
+"field below. You can find your license key on your personal page - Client "
+"area - on our website"
+msgstr ""
+
+#: bws_menu/bws_functions.php:577
+msgid ""
+"(your username is the email you specify when purchasing the product). If "
+"necessary, please submit \"Lost your password?\" request."
+msgstr ""
+
+#: bws_menu/bws_functions.php:581
+msgid "Check license key"
+msgstr ""
+
+#: bws_menu/bws_functions.php:595
+msgid "WARNING: Illegal use notification"
+msgstr ""
+
+#: bws_menu/bws_functions.php:595
+msgid ""
+"You can use one license of the Pro plugin for one domain only. Please check "
+"and edit your license or domain if necessary using you personal Client Area. "
+"We strongly recommend you to solve the problem within 24 hours, otherwise "
+"the Pro plugin will be deactivated."
+msgstr ""
+
+#: bws_menu/bws_functions.php:603
+msgid ""
+"Notice: Your Pro Trial license has expired. To continue using the plugin you "
+"should buy a Pro license"
+msgstr ""
+
+#: bws_menu/bws_functions.php:605
+msgid ""
+"Your license has expired. To continue getting top-priority support and "
+"plugin updates you should extend it."
+msgstr ""
+
+#: bws_menu/bws_functions.php:605 bws_menu/bws_functions.php:658
+#: bws_menu/bws_functions.php:1212 bws_menu/bws_menu.php:677
+#: bws_menu/bws_menu.php:699 bws_menu/bws_menu.php:726
+#: bws_menu/bws_menu.php:756 bws_menu/bws_menu.php:802
+msgid "Learn more"
+msgstr ""
+
+#: bws_menu/bws_functions.php:615
+msgid "Notice: You are using the Pro Trial license of %s plugin."
+msgstr ""
+
+#: bws_menu/bws_functions.php:617
+msgid "Notice: You are using the Pro Trial license of plugin."
+msgstr ""
+
+#: bws_menu/bws_functions.php:620
+msgid "The Pro Trial license will expire on"
+msgstr ""
+
+#: bws_menu/bws_functions.php:658
+msgid "You license for"
+msgstr ""
+
+#: bws_menu/bws_functions.php:658
+msgid "expires on"
+msgstr ""
+
+#: bws_menu/bws_functions.php:658
+msgid "and you won't be granted TOP-PRIORITY SUPPORT or UPDATES."
+msgstr ""
+
+#: bws_menu/bws_functions.php:689
+msgid "Thank you for installing"
+msgstr ""
+
+#: bws_menu/bws_functions.php:690
+msgid "Let's get started"
+msgstr ""
+
+#: bws_menu/bws_functions.php:691
+msgid "Configure Settings"
+msgstr ""
+
+#: bws_menu/bws_functions.php:694
+msgid "Add New"
+msgstr ""
+
+#: bws_menu/bws_functions.php:752
+msgid "Thank you for choosing"
+msgstr ""
+
+#: bws_menu/bws_functions.php:753
+msgid ""
+"If you have a feature, suggestion or idea you'd like to see in the plugin, "
+"we'd love to hear about it!"
+msgstr ""
+
+#: bws_menu/bws_functions.php:754
+msgid "Suggest a Feature"
+msgstr ""
+
+#: bws_menu/bws_functions.php:770
+msgid "Notice"
+msgstr ""
+
+#: bws_menu/bws_functions.php:770
+msgid "The plugin's settings have been changed."
+msgstr ""
+
+#: bws_menu/bws_functions.php:788
+msgid ""
+"You can always look at premium options by clicking on the \"Show Pro features"
+"\" in the \"Go PRO\" tab"
+msgstr ""
+
+#: bws_menu/bws_functions.php:868
+msgid "Add BWS Plugins Shortcode"
+msgstr ""
+
+#: bws_menu/bws_functions.php:888
+msgid "Add shortcode"
+msgstr ""
+
+#: bws_menu/bws_functions.php:888
+msgid "Add BestWebSoft plugins' shortcodes using this button."
+msgstr ""
+
+#: bws_menu/bws_functions.php:937
+msgid "Close"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1029
+msgid "Restore all plugin settings to defaults"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1031
+msgid "Restore settings"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1042
+msgid "Are you sure you want to restore all settings by default?"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1045
+msgid "Yes, restore all settings"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1046
+msgid "No, go back to the settings page"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1092
+msgid "Plugin"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1101
+msgid "Shortcode settings"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1106
+msgid "The shortcode will be inserted"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1111
+msgid "Insert"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1142
+msgid "Visit Help Center"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1153
+msgid "For more information:"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1154
+msgid "Documentation"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1155
+msgid "Video Instructions"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1156
+msgid "Submit a Request"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1167
+msgid "You do not have sufficient permissions to edit plugins for this site."
+msgstr ""
+
+#: bws_menu/bws_functions.php:1210
+msgid "File edited successfully."
+msgstr ""
+
+#: bws_menu/bws_functions.php:1212
+msgid "Not enough permissions to create or update the file"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1234
+msgid "These styles will be added to the header on all pages of your site."
+msgstr ""
+
+#: bws_menu/bws_functions.php:1237
+msgid "Editing"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1239
+msgid "Browsing"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1247
+msgid "Learn more about CSS"
+msgstr ""
+
+#: bws_menu/bws_functions.php:1255
+msgid ""
+"You need to make this file writable before you can save your changes. See %s "
+"the Codex %s for more information."
+msgstr ""
+
+#: bws_menu/bws_menu.php:517
+msgid "Not set"
+msgstr ""
+
+#: bws_menu/bws_menu.php:519 bws_menu/bws_menu.php:520
+msgid "On"
+msgstr ""
+
+#: bws_menu/bws_menu.php:519 bws_menu/bws_menu.php:520
+msgid "Off"
+msgstr ""
+
+#: bws_menu/bws_menu.php:521 bws_menu/bws_menu.php:522
+#: bws_menu/bws_menu.php:523 bws_menu/bws_menu.php:524
+#: bws_menu/bws_menu.php:525 bws_menu/bws_menu.php:537
+msgid "N/A"
+msgstr ""
+
+#: bws_menu/bws_menu.php:525
+msgid " Mb"
+msgstr ""
+
+#: bws_menu/bws_menu.php:526 bws_menu/bws_menu.php:527
+#: bws_menu/bws_menu.php:528 bws_menu/bws_menu.php:533
+msgid "Yes"
+msgstr ""
+
+#: bws_menu/bws_menu.php:526 bws_menu/bws_menu.php:527
+#: bws_menu/bws_menu.php:528 bws_menu/bws_menu.php:535
+msgid "No"
+msgstr ""
+
+#: bws_menu/bws_menu.php:545
+msgid "Operating System"
+msgstr ""
+
+#: bws_menu/bws_menu.php:546
+msgid "Server"
+msgstr ""
+
+#: bws_menu/bws_menu.php:547
+msgid "Memory usage"
+msgstr ""
+
+#: bws_menu/bws_menu.php:548
+msgid "MYSQL Version"
+msgstr ""
+
+#: bws_menu/bws_menu.php:549
+msgid "SQL Mode"
+msgstr ""
+
+#: bws_menu/bws_menu.php:550
+msgid "PHP Version"
+msgstr ""
+
+#: bws_menu/bws_menu.php:551
+msgid "PHP Safe Mode"
+msgstr ""
+
+#: bws_menu/bws_menu.php:552
+msgid "PHP Allow URL fopen"
+msgstr ""
+
+#: bws_menu/bws_menu.php:553
+msgid "PHP Memory Limit"
+msgstr ""
+
+#: bws_menu/bws_menu.php:554
+msgid "PHP Max Upload Size"
+msgstr ""
+
+#: bws_menu/bws_menu.php:555
+msgid "PHP Max Post Size"
+msgstr ""
+
+#: bws_menu/bws_menu.php:556
+msgid "PHP Max Script Execute Time"
+msgstr ""
+
+#: bws_menu/bws_menu.php:557
+msgid "PHP Exif support"
+msgstr ""
+
+#: bws_menu/bws_menu.php:558
+msgid "PHP IPTC support"
+msgstr ""
+
+#: bws_menu/bws_menu.php:559
+msgid "PHP XML support"
+msgstr ""
+
+#: bws_menu/bws_menu.php:560
+msgid "Site URL"
+msgstr ""
+
+#: bws_menu/bws_menu.php:561
+msgid "Home URL"
+msgstr ""
+
+#: bws_menu/bws_menu.php:564
+msgid "WordPress Version"
+msgstr ""
+
+#: bws_menu/bws_menu.php:565
+msgid "WordPress DB Version"
+msgstr ""
+
+#: bws_menu/bws_menu.php:566
+msgid "Multisite"
+msgstr ""
+
+#: bws_menu/bws_menu.php:567
+msgid "Active Theme"
+msgstr ""
+
+#: bws_menu/bws_menu.php:582
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: bws_menu/bws_menu.php:586
+msgid "Email with system info is sent to "
+msgstr ""
+
+#: bws_menu/bws_menu.php:590
+msgid "Thank you for contacting us."
+msgstr ""
+
+#: bws_menu/bws_menu.php:623
+msgid "Sorry, email message could not be delivered."
+msgstr ""
+
+#: bws_menu/bws_menu.php:630
+msgid "Need help?"
+msgstr ""
+
+#: bws_menu/bws_menu.php:631
+msgid "Client area"
+msgstr ""
+
+#: bws_menu/bws_menu.php:632 bws_menu/bws_menu.php:944
+msgid "System status"
+msgstr ""
+
+#: bws_menu/bws_menu.php:637
+msgid "Plugins"
+msgstr ""
+
+#: bws_menu/bws_menu.php:638
+msgid "Themes"
+msgstr ""
+
+#: bws_menu/bws_menu.php:642
+msgid "All"
+msgstr ""
+
+#: bws_menu/bws_menu.php:643
+msgid "Installed"
+msgstr ""
+
+#: bws_menu/bws_menu.php:644
+msgid "Recommended"
+msgstr ""
+
+#: bws_menu/bws_menu.php:648
+msgid "Installed plugins"
+msgstr ""
+
+#: bws_menu/bws_menu.php:701 bws_menu/bws_menu.php:758
+msgid "Activate this plugin"
+msgstr ""
+
+#: bws_menu/bws_menu.php:716 bws_menu/bws_menu.php:746
+#: bws_menu/bws_menu.php:792
+msgid "Go"
+msgstr ""
+
+#: bws_menu/bws_menu.php:720 bws_menu/bws_menu.php:750
+#: bws_menu/bws_menu.php:796
+msgid "DONATE"
+msgstr ""
+
+#: bws_menu/bws_menu.php:766
+msgid "Recommended plugins"
+msgstr ""
+
+#: bws_menu/bws_menu.php:804
+msgid "Install now"
+msgstr ""
+
+#: bws_menu/bws_menu.php:825
+msgid "Try again"
+msgstr ""
+
+#: bws_menu/bws_menu.php:835
+msgid "Having trouble viewing this page?"
+msgstr ""
+
+#: bws_menu/bws_menu.php:835
+msgid "Click here"
+msgstr ""
+
+#: bws_menu/bws_menu.php:846
+msgid "Preview &#8220;%s&#8221;"
+msgstr ""
+
+#: bws_menu/bws_menu.php:877
+msgid "Install %s"
+msgstr ""
+
+#: bws_menu/bws_menu.php:877
+msgid "Install Now"
+msgstr ""
+
+#: bws_menu/bws_menu.php:880
+msgid "Update to version %s"
+msgstr ""
+
+#: bws_menu/bws_menu.php:880
+msgid "Update"
+msgstr ""
+
+#: bws_menu/bws_menu.php:884
+msgid "This theme is already installed and is up to date"
+msgstr ""
+
+#: bws_menu/bws_menu.php:884
+msgctxt "theme"
+msgid "Installed"
+msgstr ""
+
+#: bws_menu/bws_menu.php:887
+msgid "Preview %s"
+msgstr ""
+
+#: bws_menu/bws_menu.php:887
+msgid "Preview"
+msgstr ""
+
+#: bws_menu/bws_menu.php:893 bws_menu/bws_menu.php:924
+msgid "By %s"
+msgstr ""
+
+#: bws_menu/bws_menu.php:899
+msgid "Details"
+msgstr ""
+
+#: bws_menu/bws_menu.php:930
+msgid "Already Installed"
+msgstr ""
+
+#: bws_menu/bws_menu.php:947
+msgid "Environment"
+msgstr ""
+
+#: bws_menu/bws_menu.php:958
+msgid "Active Plugins"
+msgstr ""
+
+#: bws_menu/bws_menu.php:971
+msgid "Inactive Plugins"
+msgstr ""
+
+#: bws_menu/bws_menu.php:987
+msgid "Send to support"
+msgstr ""
+
+#: bws_menu/bws_menu.php:994
+msgid "Send to custom email &#187;"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Pinterest by BestWebSoft"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://bestwebsoft.com/products/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add Pinterest buttons and widgets to your WordPress website."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "BestWebSoft"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://bestwebsoft.com/"
+msgstr ""
