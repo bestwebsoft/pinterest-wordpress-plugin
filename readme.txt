@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 3.8
-Tested up to: 4.5.1
-Stable tag: 1.0.0
+Tested up to: 4.5.2
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,9 +16,11 @@ Pinterest plugin allows you to add Pinterest Pin It button, Follow button, and w
 
 http://www.youtube.com/watch?v=AQJt2aGfNX4
 
-<a href="http://wordpress.org/plugins/pinterest/faq/" target="_blank">FAQ</a>
+<a href="http://wordpress.org/plugins/bws-pinterest/faq/" target="_blank">FAQ</a>
 
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+
+<a href="http://bestwebsoft.com/products/pinterest/?k=c3e15e6e7ca65b36b0ce06decb187b73" target="_blank">Upgrade to Pinterest Pro by BestWebSoft</a>
 
 = Features = 
 
@@ -83,13 +85,18 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 6. Adding Pinterest widgets to the sidebar.
 7. Adding Pinterest shortcode to your post or page.
 
-
 == Changelog == 
+
+= V1.0.1 - 26.05.2016 = 
+* Update : The filter for widget title has been added.
 
 = V1.0.0 - 20.04.2016 = 
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.0.1 = 
+The filter for widget title has been added.
 
 = V1.0.0 = 
 Release of Pinterest plugin.
