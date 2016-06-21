@@ -6,7 +6,7 @@ Description: Add Pinterest buttons and widgets to your WordPress website.
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -31,7 +31,7 @@ License: GPLv3 or later
 if ( ! function_exists( 'pntrst_admin_actions' ) ) {
 	function pntrst_admin_actions() {
 		bws_general_menu();
-		$settings = add_submenu_page( 'bws_plugins', 'Pinterest', 'Pinterest', 'manage_options', 'pinterest.php', 'pntrst_settings_page' );
+		$settings = add_submenu_page( 'bws_panel', 'Pinterest', 'Pinterest', 'manage_options', 'pinterest.php', 'pntrst_settings_page' );
 		add_action( 'load-' . $settings, 'pntrst_add_tabs' );
 	}
 }
@@ -90,6 +90,7 @@ if ( ! function_exists( 'pntrst_admin_init' ) ) {
 if ( ! function_exists ( 'pntrst_enqueue' ) ) {
 	function pntrst_enqueue( $hook ) {
 		if ( isset( $_GET['page'] ) && ( 'pinterest.php' == $_GET['page'] || 'social-buttons.php' == $_GET['page'] ) ) {
+			wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
 			wp_enqueue_script( 'pntrst_script', plugins_url( 'js/script.js', __FILE__ ) );
 
 			if ( isset( $_GET['action'] ) && 'custom_code' == $_GET['action'] )
@@ -225,6 +226,7 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 				$error = __( 'Error: select the upload file', 'bws-pinterest' );
 			}
 			if ( empty( $error ) ) {
+				$pntrst_options = apply_filters( 'pntrst_before_save_options', $pntrst_options );
 				update_option( 'pntrst_options', $pntrst_options );
 				$message = __( 'Settings saved', 'bws-pinterest' );
 			}
@@ -237,22 +239,29 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 			$message = __( 'All plugin settings were restored.', 'bws-pinterest' );
 		} 
 
-		/* GO PRO */
+		/*pls GO PRO */
 		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
 			$go_pro_result = bws_go_pro_tab_check( $plugin_basename, 'pntrst_options' );
 			if ( ! empty( $go_pro_result['error'] ) )
 				$error = $go_pro_result['error'];
 			elseif ( ! empty( $go_pro_result['message'] ) )
 				$message = $go_pro_result['message'];
-		}/* end GO PRO ##*/ ?>
+		}/* end GO PRO pls*/##*/ ?>
 		<!-- general -->
 		<div class="wrap">
 			<h1><?php _e( 'Pinterest Settings', 'bws-pinterest' ); ?></h1>
+			<ul class="subsubsub pntrst_how_to_use">
+				<li><a href="https://docs.google.com/document/d/1cOVH69e6hW5qwrfkqYbMR6iUOwfK-5P2ptTBwHOR_xI/edit" target="_blank"><?php _e( 'How to Use Step-by-step Instruction', 'bws-pinterest' ); ?></a></li>
+			</ul>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab<?php echo ! isset( $_GET['action'] ) ? ' nav-tab-active': ''; ?>" href="admin.php?page=pinterest.php"><?php _e( 'Settings', 'bws-pinterest' ); ?></a>
+				<!-- pls -->
 				<a class="nav-tab<?php if ( isset( $_GET['action'] ) && 'extra' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=pinterest.php&amp;action=extra"><?php _e( 'Extra settings', 'bws-pinterest' ); ?></a>
+				<!-- end pls -->
 				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'custom_code' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=pinterest.php&amp;action=custom_code"><?php _e( 'Custom code', 'bws-pinterest' ); ?></a>
-				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=pinterest.php&amp;action=go_pro"><?php _e( 'Go PRO', 'bws-pinterest' ); ?></a>			
+				<!-- pls -->
+				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=pinterest.php&amp;action=go_pro"><?php _e( 'Go PRO', 'bws-pinterest' ); ?></a>
+				<!-- end pls -->		
 			</h2>
 			<!-- end general -->
 			<?php if ( ! empty( $message ) ) { ?>
@@ -269,7 +278,7 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 				} else { /* check action ##*/ ?>
 					<br />
 					<div>
-						<?php $icon_shortcode = ( "pinterest.php" == $_GET['page'] ) ? plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) : plugins_url( 'social-buttons-pack/bws_menu/images/shortcode-icon.png' );
+						<?php $icon_shortcode = ( 'social-buttons.php' == $_GET['page'] ) ? plugins_url( 'social-buttons-pack/bws_menu/images/shortcode-icon.png' ) : plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ );
 						printf(
 							__( 'If you would like to add Pinterest buttons or widgets to your page or post, please use %s button', 'bws-pinterest' ),
 							'<span class="bws_code"><img style="vertical-align: sub;" src="' . $icon_shortcode . '" alt=""/></span>' ); ?>
@@ -298,6 +307,7 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 									</div>
 								</td>
 							</tr>
+							<?php do_action( 'pntrst_settings_page_action', $pntrst_options ); ?>
 						</table>
 						<hr />
 						<h3><?php _e( 'Settings for Pin It Button', 'bws-pinterest' ); ?></h3>
@@ -415,7 +425,9 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 					<!-- general -->
 					<?php bws_form_restore_default_settings( $plugin_basename );
 				}
-			} elseif ( 'extra' == $_GET['action'] ) { ?>
+			} elseif ( 'custom_code' == $_GET['action'] ) {
+				bws_custom_code_tab();			
+			} /*pls extra banner */ elseif ( 'extra' == $_GET['action'] ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">	
 						<div class="bws_table_bg"></div>											
@@ -458,12 +470,10 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 						<div class="clear"></div>					
 					</div>
 				</div>
-			<?php } elseif ( 'custom_code' == $_GET['action'] ) {
-				bws_custom_code_tab();
-			} elseif ( 'go_pro' == $_GET['action'] ) { 
+			<?php } elseif ( 'go_pro' == $_GET['action'] ) { 
 				bws_go_pro_tab_show( false, $pntrst_plugin_info, $plugin_basename, 'pinterest.php', 'pinterest-pro.php', 'bws-pinterest-pro/bws-pinterest-pro.php', 'pinterest', 'f8f97fcf6a752a73595ec494940c4bb8', '547', isset( $go_pro_result['pro_plugin_is_activated'] ) ); 
 			}
-			bws_plugin_reviews_block( $pntrst_plugin_info['Name'], 'bws-pinterest' ); ?>
+			bws_plugin_reviews_block( $pntrst_plugin_info['Name'], 'bws-pinterest' ); /* show reviews block pls*/ ?>
 		</div>
 		<!-- end general -->
 	<?php }
@@ -548,6 +558,9 @@ if ( ! function_exists( 'pntrst_frontend' ) ) {
 				$after .= $pinit_code;
 			if ( 1 == $pntrst_options['follow_after'] )
 				$after .= $follow_code;
+
+			$before = apply_filters( 'pntrst_button_in_the_content', $before );
+			$after = apply_filters( 'pntrst_button_in_the_content', $after );
 		}
 		return $before . $content . $after;
 	}
@@ -1023,13 +1036,15 @@ if ( ! function_exists ( 'pntrst_admin_notices' ) ) {
 		global $hook_suffix, $pntrst_plugin_info, $pntrst_options;
 
 		if ( 'plugins.php' == $hook_suffix && ! is_network_admin() ) {
-			bws_plugin_banner_to_settings( $pntrst_plugin_info, 'pntrst_options', 'bws-pinterest', 'admin.php?page=pinterest.php' );
-
+			
+			/*pls show banner go pro */
 			if ( empty( $pntrst_options ) )
 				$pntrst_options = get_option( 'pntrst_options' );
 
 			if ( isset( $pntrst_options['first_install'] ) && strtotime( '-1 week' ) > $pntrst_options['first_install'] )
 				bws_plugin_banner( $pntrst_plugin_info, 'pntrst', 'pinterest', '964a97a5409b7ba8f0744b6f28a0372c', '547', 'bws-pinterest' );
+			/* show banner go settings pls*/
+			bws_plugin_banner_to_settings( $pntrst_plugin_info, 'pntrst_options', 'bws-pinterest', 'admin.php?page=pinterest.php' );
 		}
 
 		if ( isset( $_GET['page'] ) && 'pinterest.php' == $_GET['page'] )
@@ -1056,19 +1071,21 @@ if ( ! function_exists( 'pntrst_uninstall' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 		$all_plugins = get_plugins();
-		if ( ! array_key_exists( 'bws-social-buttons/bws-social-buttons.php', $all_plugins ) ) {
+		if ( ! array_key_exists( 'bws-pinterest-plus/bws-pinterest-plus.php', $all_plugins ) && 
+			! array_key_exists( 'bws-pinterest/bws-pinterest.php', $all_plugins ) &&
+			! array_key_exists( 'bws-social-buttons/bws-social-buttons.php', $all_plugins ) &&
+			! array_key_exists( 'bws-social-buttons-pro/bws-social-buttons-pro.php', $all_plugins ) ) {
 			global $wpdb;
-			if ( ! array_key_exists( 'bws-pinterest-pro/bws-pinterest-pro.php', $all_plugins ) ) {
-				/* delete custom images if no PRO version */
-				$upload_dir = wp_upload_dir();
-				$custom_img_folder = $upload_dir['basedir'] . '/pinterest-image/';
-				if ( is_dir( $custom_img_folder ) ) {
-					$pntrstpr_custom_img_files = scandir( $custom_img_folder );
-					foreach ( $pntrstpr_custom_img_files as $value ) {
-						@unlink( $custom_img_folder . $value );
-					}
-					@rmdir( $custom_img_folder );
+			
+			/* delete custom images if no PRO version */
+			$upload_dir = wp_upload_dir();
+			$custom_img_folder = $upload_dir['basedir'] . '/pinterest-image/';
+			if ( is_dir( $custom_img_folder ) ) {
+				$pntrstpr_custom_img_files = scandir( $custom_img_folder );
+				foreach ( $pntrstpr_custom_img_files as $value ) {
+					@unlink( $custom_img_folder . $value );
 				}
+				@rmdir( $custom_img_folder );
 			}
 			
 			if ( function_exists( 'is_multisite' ) && is_multisite() ) {

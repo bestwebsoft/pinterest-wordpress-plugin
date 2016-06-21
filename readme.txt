@@ -4,7 +4,7 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 3.8
 Tested up to: 4.5.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,6 +87,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog == 
 
+= V1.0.2 - 21.06.2016 =
+* Update : Instruction link was added.
+* Update : BWS plugins section is updated.
+
 = V1.0.1 - 26.05.2016 = 
 * Update : The filter for widget title has been added.
 
@@ -94,6 +98,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.0.2 =
+Instruction link was added. BWS plugins section is updated.
 
 = V1.0.1 = 
 The filter for widget title has been added.
