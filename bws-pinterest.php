@@ -1,12 +1,12 @@
 <?php
 /*##
 Plugin Name: Pinterest by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/
-Description: Add Pinterest buttons and widgets to your WordPress website.
+Plugin URI: http://bestwebsoft.com/products/pinterest/
+Description: Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
