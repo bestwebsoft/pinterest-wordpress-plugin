@@ -3,7 +3,7 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 3.8
-Tested up to: 4.6
+Tested up to: 4.6.1
 Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -12,43 +12,97 @@ Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) t
 
 == Description ==
 
-Pinterest plugin allows you to add Pinterest Pin It button, Follow button, and widgets (Pin, Board, Profile). Plugin has simple settings and includes shortcodes. So if you want to add Pinterest social elements to your website in few clicks, this plugin will be the best solution for you.
+Pinterest plugin is a useful social solution which adds Pinterest Pin It button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes. 
+
+Customize the appearance, configure settings, and get more social traffic to your website!
 
 http://www.youtube.com/watch?v=AQJt2aGfNX4
 
-<a href="http://wordpress.org/plugins/bws-pinterest/faq/" target="_blank">FAQ</a>
+= Free Features =
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+* Automatically add Pin It button:
+	* Before content
+	* After content
+	* On image hover
+* Automatically add Follow button:
+	* Before the content
+	* After the content
+* Add Pinterest buttons via shortcode
+* Add Pinterest widget:
+	* Pin
+	* Board
+	* Profile
+* Add Follow button label
+* Choose Pin widget size:
+	* Small
+	* Medium
+	* Large
+* Set Board and Profile widget:
+	* Width
+	* Height
+	* Thumbnails width
+* Set custom Pin It button image type
+* Configure default Pin It button options:
+	* Shape
+		* Square
+		* Round
+	* Size
+		* Small
+		* Large
+	* Color
+		* Red
+		* Grey
+		* White
+	* Pin counts relative to the button
+		* None
+		* Above
+		* Beside
+* Add custom code via plugin settings page
+* Compatible with latest WordPress version
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
 
-<a href="http://bestwebsoft.com/products/pinterest/?k=c3e15e6e7ca65b36b0ce06decb187b73" target="_blank">Upgrade to Pinterest Pro by BestWebSoft</a>
+> **Pro Features**
+>
+> All features from Free version included plus:
+>
+> * Display Pinterest buttons for certain pages and/or post types
+> * Сonfigure all subsites on the network
+> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+>
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/pinterest/?k=c3e15e6e7ca65b36b0ce06decb187b73)
 
-= Features = 
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
-* Add Pinterest buttons in the easiest way (Follow and Pin It buttons).
-* Choose button layout for Pin It and Follow buttons.
-* Select the Pin It button position: before the content, after, on image hover or using a shortcode.
-* Select the Follow button position: before the content, after or using a shortcode.
-* Select Pin It button type for saving one defined image or any image on a page (when using shortcode).
-* Use any custom image for Pin It button image.
-* Add Pinterest widgets to your sidebars or content.
-* Select any widget size.
+= Documentation & Videos =
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+* [[Doc] How to Use](https://docs.google.com/document/d/1cOVH69e6hW5qwrfkqYbMR6iUOwfK-5P2ptTBwHOR_xI/)
+* [[Doc] Installation](https://docs.google.com/document/d/1x9QiIjihY9NVh-fKB2U9d4fWNfIgDmdA1Dd0WyJUNZM/)
+
+= Help & Support =
+
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=23213b6fa43b7c059fc94af0ae2868ce) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Google +1](http://bestwebsoft.com/products/wordpress/plugins/google-plus-one/?k=d4f7f1fae309de330b48b9fcf64c6e66) - Add Google +1 Share, Follow, Hangout buttons and profile badge to WordPress posts, pages and widgets.
+* [LinkedIn](http://bestwebsoft.com/products/wordpress/plugins/linkedin/?k=c54bef8c06dceac21abdf5a77bb3cf9c) - Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. 5 plugins included – profile, insider, etc.
+* [Twitter](http://bestwebsoft.com/products/wordpress/plugins/twitter/?k=712e57dc3bbc311b2f5199e76c18f587) - Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts, pages and widgets.
+* [Facebook Button](http://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61) - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
 
-If you notice any bugs in the plugin's work, you can notify us about them and we'll investigate and fix the issue then. Your request should contain website URL, issues description and WordPress admin panel credentials.
-Moreover, we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
-We can fix some things for free for the users who provide a translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation == 
 
@@ -68,12 +122,12 @@ Check if widget URL is correct or pin/board/profile exists.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a>
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots == 
 
