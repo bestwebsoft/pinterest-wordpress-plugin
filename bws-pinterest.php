@@ -1,12 +1,12 @@
 <?php
 /*##
 Plugin Name: Pinterest by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/pinterest/
+Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/pinterest/
 Description: Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -451,11 +451,6 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2">
-									<input disabled="disabled" type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'bws-pinterest' ); ?>" />
-								</td>
-							</tr>
-							<tr>
 								<th scope="row" colspan="2">
 									* <?php _e( 'If you upgrade to Pro version all your settings will be saved.', 'bws-pinterest' ); ?>
 								</th>
@@ -466,7 +461,7 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 						<div class="bws_info">
 							<?php _e( 'Unlock premium options by upgrading to Pro version', 'bws-pinterest' ); ?>
 						</div>
-						<a class="bws_button" href="http://bestwebsoft.com/products/pinterest/?k=f8f97fcf6a752a73595ec494940c4bb8&amp;pn=547&amp;v=<?php echo $pntrst_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="pinterest Pro"><?php _e( 'Learn More', 'bws-pinterest' ); ?></a>
+						<a class="bws_button" href="http://bestwebsoft.com/products/wordpress/plugins/pinterest/?k=f8f97fcf6a752a73595ec494940c4bb8&amp;pn=547&amp;v=<?php echo $pntrst_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="pinterest Pro"><?php _e( 'Learn More', 'bws-pinterest' ); ?></a>
 						<div class="clear"></div>					
 					</div>
 				</div>
@@ -563,6 +558,13 @@ if ( ! function_exists( 'pntrst_frontend' ) ) {
 			$after = apply_filters( 'pntrst_button_in_the_content', $after );
 		}
 		return $before . $content . $after;
+	}
+}
+
+if ( ! function_exists( 'pntrst_pagination_callback' ) ) {
+	function pntrst_pagination_callback( $content ) {
+		$content .= "if ( typeof( PinUtils ) != 'undefined' ) { PinUtils.build(); }";
+		return $content;
 	}
 }
 
@@ -1007,7 +1009,7 @@ if ( ! function_exists( 'pntrst_links' ) ) {
 		if ( $file == $base ) {
 			if ( ! is_network_admin() )
 				$links[] = '<a href="admin.php?page=pinterest.php">' . __( 'Settings', 'bws-pinterest' ) . '</a>';
-			$links[] = '<a href="http://wordpress.org/plugins/bws-pinterest/faq/" target="_blank">' . __( 'FAQ', 'bws-pinterest' ) . '</a>';
+			$links[] = '<a href="http://support.bestwebsoft.com/hc/en-us/sections/201918113" target="_blank">' . __( 'FAQ', 'bws-pinterest' ) . '</a>';
 			$links[] = '<a href="http://support.bestwebsoft.com">' . __( 'Support', 'bws-pinterest' ) . '</a>';
 		}
 		return $links;
@@ -1128,6 +1130,8 @@ add_action( 'wp_head', 'pntrst_pinit_js_config' );
 add_action( 'wp_footer', 'pntrst_custom_hover_img_script' );
 /* show buttons on frontend */
 add_filter( 'the_content', 'pntrst_frontend' );
+add_filter( 'pgntn_callback', 'pntrst_pagination_callback' );
+
 /* add shortcode for Pin It button */
 add_shortcode( 'bws_pinterest_pin_it', 'pntrst_pin_it_shortcode' );
 /* add shortcode for Pin Follow button */

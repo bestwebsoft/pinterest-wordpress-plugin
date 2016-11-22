@@ -4,7 +4,7 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 3.8
 Tested up to: 4.6.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) t
 
 == Description ==
 
-Pinterest plugin is a useful social solution which adds Pinterest Pin It button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes. 
+Pinterest plugin is a useful social solution which adds Pinterest Pin It button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
 
 Customize the appearance, configure settings, and get more social traffic to your website!
 
@@ -104,7 +104,7 @@ Donations play an important role in supporting open-source projects. We greatly 
 
 [Donate Now](http://bestwebsoft.com/donate/)
 
-== Installation == 
+== Installation ==
 
 1. Upload the `bws-pinterest` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
@@ -129,7 +129,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 3. the version of your WordPress installation
 4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
-== Screenshots == 
+== Screenshots ==
 
 1. Pinterest Pin It and Follow buttons before the post.
 2. Displaying Pinterest Pin widget.
@@ -141,6 +141,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 
 == Changelog ==
 
+= V1.0.4 - 21.11.2016 =
+* Update : Compatibility with Pagination plugin was added.
+* Pro : Tree of site pages was updated.
+
 = V1.0.3 - 09.08.2016 =
 * Update : All functionality for WordPress 4.6 was updated.
 
@@ -148,13 +152,16 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * Update : Instruction link was added.
 * Update : BWS plugins section is updated.
 
-= V1.0.1 - 26.05.2016 = 
+= V1.0.1 - 26.05.2016 =
 * Update : The filter for widget title has been added.
 
-= V1.0.0 - 20.04.2016 = 
+= V1.0.0 - 20.04.2016 =
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.0.4 =
+* Functionality improved.
 
 = V1.0.3 =
 * The compatibility with new WordPress version updated.
@@ -162,8 +169,8 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 = V1.0.2 =
 Instruction link was added. BWS plugins section is updated.
 
-= V1.0.1 = 
+= V1.0.1 =
 The filter for widget title has been added.
 
-= V1.0.0 = 
+= V1.0.0 =
 Release of Pinterest plugin.
