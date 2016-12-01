@@ -1,9 +1,7 @@
-<a href="http://bestwebsoft.com/products/pinterest/" target=_blank>Pinterest WordPress Plugin</a>
+<a href="http://bestwebsoft.com/products/wordpress/plugins/pinterest/" target=_blank>Pinterest WordPress Plugin</a>
 ========================
 
 Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
-
-<img src="http://bestwebsoft.com/wp-content/uploads/2016/04/pinterest-banner-website.jpg" />
 
 <p>Pinterest plugin is a useful social solution which adds Pinterest Pin It button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.</p>
 
