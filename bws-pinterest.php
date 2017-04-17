@@ -1,17 +1,17 @@
 <?php
 /*##
 Plugin Name: Pinterest by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/pinterest/
+Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/pinterest/
 Description: Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.0.4
-Author URI: http://bestwebsoft.com/
+Version: 1.0.5
+Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2016  BestWebSoft  ( http://support.bestwebsoft.com )
+/*  © Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 3, as
@@ -278,15 +278,14 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 				} else { /* check action ##*/ ?>
 					<br />
 					<div>
-						<?php $icon_shortcode = ( 'social-buttons.php' == $_GET['page'] ) ? plugins_url( 'social-buttons-pack/bws_menu/images/shortcode-icon.png' ) : plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ );
-						printf(
+						<?php printf(
 							__( 'If you would like to add Pinterest buttons or widgets to your page or post, please use %s button', 'bws-pinterest' ),
-							'<span class="bws_code"><img style="vertical-align: sub;" src="' . $icon_shortcode . '" alt=""/></span>' ); ?>
+							'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>' ); ?>
 						<div class="bws_help_box bws_help_box_right dashicons dashicons-editor-help">
 							<div class="bws_hidden_help_text" style="min-width: 200px;">
 								<?php printf(
 									__( "You can add buttons or widgets to your content by clicking on %1s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %2s for Pin It button, %3s for Follow button or %4s for Pinteresr widget", 'bws-pinterest' ),
-										'<code><img style="vertical-align: sub;" src="' . $icon_shortcode . '" alt="" /></code>',
+										'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>',
 										'<span class="bws_code">[bws_pinterest_pin_it]</span>',
 										'<span class="bws_code">[bws_pinterest_follow]</span>',
 										'<span class="bws_code">[bws_pinterest_widget]</span>'
@@ -458,10 +457,7 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 						</table>	
 					</div>
 					<div class="bws_pro_version_tooltip">
-						<div class="bws_info">
-							<?php _e( 'Unlock premium options by upgrading to Pro version', 'bws-pinterest' ); ?>
-						</div>
-						<a class="bws_button" href="http://bestwebsoft.com/products/wordpress/plugins/pinterest/?k=f8f97fcf6a752a73595ec494940c4bb8&amp;pn=547&amp;v=<?php echo $pntrst_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="pinterest Pro"><?php _e( 'Learn More', 'bws-pinterest' ); ?></a>
+						<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/pinterest/?k=f8f97fcf6a752a73595ec494940c4bb8&amp;pn=547&amp;v=<?php echo $pntrst_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="pinterest Pro"><?php _e( 'Learn More', 'bws-pinterest' ); ?></a>
 						<div class="clear"></div>					
 					</div>
 				</div>
@@ -1009,8 +1005,8 @@ if ( ! function_exists( 'pntrst_links' ) ) {
 		if ( $file == $base ) {
 			if ( ! is_network_admin() )
 				$links[] = '<a href="admin.php?page=pinterest.php">' . __( 'Settings', 'bws-pinterest' ) . '</a>';
-			$links[] = '<a href="http://support.bestwebsoft.com/hc/en-us/sections/201918113" target="_blank">' . __( 'FAQ', 'bws-pinterest' ) . '</a>';
-			$links[] = '<a href="http://support.bestwebsoft.com">' . __( 'Support', 'bws-pinterest' ) . '</a>';
+			$links[] = '<a href="https://support.bestwebsoft.com/hc/en-us/sections/201918113" target="_blank">' . __( 'FAQ', 'bws-pinterest' ) . '</a>';
+			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-pinterest' ) . '</a>';
 		}
 		return $links;
 	}
