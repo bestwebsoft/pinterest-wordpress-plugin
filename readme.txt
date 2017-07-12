@@ -2,17 +2,17 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.0.5
+Requires at least: 3.9
+Tested up to: 4.8
+Stable tag: 1.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
+Add Pinterest Follow, Save buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
 
 == Description ==
 
-Pinterest plugin is a useful social solution which adds Pinterest Pin It button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
+Pinterest plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
 
 Customize the appearance, configure settings, and get more social traffic to your website!
 
@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=AQJt2aGfNX4
 
 = Free Features =
 
-* Automatically add Pin It button:
+* Automatically add Save button:
 	* Before content
 	* After content
 	* On image hover
@@ -33,6 +33,7 @@ https://www.youtube.com/watch?v=AQJt2aGfNX4
 	* Board
 	* Profile
 * Add Follow button label
+* Set custom language for "Save" button
 * Choose Pin widget size:
 	* Small
 	* Medium
@@ -41,22 +42,19 @@ https://www.youtube.com/watch?v=AQJt2aGfNX4
 	* Width
 	* Height
 	* Thumbnails width
-* Set custom Pin It button image type
-* Configure default Pin It button options:
+* Set custom Save button image type
+* Configure default Save button options:
 	* Shape
 		* Square
 		* Round
 	* Size
 		* Small
 		* Large
-	* Color
-		* Red
-		* Grey
-		* White
 	* Pin counts relative to the button
 		* None
 		* Above
 		* Beside
+* Compatible with Multilanguage (current website language detection)
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
@@ -94,7 +92,8 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=23213b6fa43b7c059fc94af0ae2868ce) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=23213b6fa43b7c059fc94af0ae2868ce) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
+* [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=ba5e29d947ec030cacff8c3931835aa1) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 * [Google +1](https://bestwebsoft.com/products/wordpress/plugins/google-plus-one/?k=d4f7f1fae309de330b48b9fcf64c6e66) - Add Google +1 Share, Follow, Hangout buttons and profile badge to WordPress posts, pages and widgets.
 * [LinkedIn](https://bestwebsoft.com/products/wordpress/plugins/linkedin/?k=c54bef8c06dceac21abdf5a77bb3cf9c) - Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. 5 plugins included – profile, insider, etc.
 * [Twitter](https://bestwebsoft.com/products/wordpress/plugins/twitter/?k=712e57dc3bbc311b2f5199e76c18f587) - Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts, pages and widgets.
@@ -104,13 +103,13 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload the `bws-pinterest` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Pinterest".
+3. You can adjust the necessary settings using your WordPress admin panel in "Pinterest".
 
 == Frequently Asked Questions ==
 
 = Follow button is not displaying properly =
 
-In WordPress admin panel, please go to "BWS Panel", find Pinterest settings page and check if Pinterest username is correct.
+In WordPress admin panel, please go to Pinterest settings page and check if Pinterest username is correct.
 
 = Pinterest widget is not displaying =
 
@@ -123,11 +122,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc)
 
 == Screenshots ==
 
-1. Pinterest Pin It and Follow buttons before the post.
+1. Pinterest Save and Follow buttons before the post.
 2. Pinterest Pin widget displaying.
 3. Pinterest Board widget displaying.
 4. Pinterest Profile widget displaying.
@@ -136,6 +135,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 7. Adding Pinterest shortcode to your post or page.
 
 == Changelog ==
+
+= V1.0.6 - 12.07.2017 =
+* Update : The plugin settings page has been updated.
+* Update : "Pin it" button has renamed as "Save".
+* Update : Deprecated option "Button color" has been removed.
+* NEW : Ability to set custom language for "Save" button.
+* NEW : Ability to use the current site language for Pinterest button (Using Multilanguage by BestWebSoft).
 
 = V1.0.5 - 17.04.2017 =
 * Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
@@ -159,6 +165,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.0.6 =
+* Functionality improved.
 
 = V1.0.5 =
 * Bugs fixed.
