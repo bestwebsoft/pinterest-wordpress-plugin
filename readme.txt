@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 3.9
-Tested up to: 4.8
-Stable tag: 1.0.6
+Tested up to: 4.9.1
+Stable tag: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,7 +65,7 @@ https://www.youtube.com/watch?v=AQJt2aGfNX4
 > All features from Free version included plus:
 >
 > * Display Pinterest buttons for certain pages and/or post types
-> * Сonfigure all subsites on the network
+> * Configure all subsites on the network
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/pinterest/?k=c3e15e6e7ca65b36b0ce06decb187b73)
@@ -136,6 +136,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.0.7 - 21.12.2017 =
+* Update : "Save" button is visible when JS is disabled.
+* Bugfix : Options removal from the database when working on a multisite network has been fixed.
+* Bugfix : Compatibility with Multilanguage plugin by BestWebSoft has been fixed.
+
 = V1.0.6 - 12.07.2017 =
 * Update : The plugin settings page has been updated.
 * Update : "Pin it" button has renamed as "Save".
@@ -165,6 +170,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.0.7 =
+* Bugs fixed.
 
 = V1.0.6 =
 * Functionality improved.

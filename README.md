@@ -78,7 +78,7 @@
 <p>All features from Free version included plus:</p>
 <ul>
 <li>Display Pinterest buttons for certain pages and/or post types</li>
-<li>Сonfigure all subsites on the network</li>
+<li>Configure all subsites on the network</li>
 <li>Get answer to your support question within one business day (<a href="https://bestwebsoft.com/support-policy/" rel="nofollow">Support Policy</a>)</li>
 </ul>
 <p><a href="https://bestwebsoft.com/products/wordpress/plugins/pinterest/?k=c3e15e6e7ca65b36b0ce06decb187b73" rel="nofollow">Upgrade to Pro Now</a></p>
