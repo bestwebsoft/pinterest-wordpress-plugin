@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bws-pinterest\n"
-"POT-Creation-Date: 2017-12-20 16:26+0200\n"
-"PO-Revision-Date: 2017-12-20 16:27+0200\n"
+"POT-Creation-Date: 2018-01-15 13:21+0200\n"
+"PO-Revision-Date: 2018-01-15 13:21+0200\n"
 "Last-Translator: Mik013\n"
 "Language-Team: Mik013\n"
 "Language: cs_CZ\n"
@@ -16,13 +16,13 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: bws-pinterest.php:35 bws-pinterest.php:36
+#: bws-pinterest.php:35 bws-pinterest.php:36 bws-pinterest.php:205
 #: includes/class-pntrst-settings.php:180
 msgid "Pinterest Settings"
 msgstr "Nastavení Pinterest"
 
-#: bws-pinterest.php:36 bws-pinterest.php:205 bws-pinterest.php:793
-#: bws-pinterest.php:811 includes/class-pntrst-settings.php:23
+#: bws-pinterest.php:36 bws-pinterest.php:793 bws-pinterest.php:811
+#: includes/class-pntrst-settings.php:23
 msgid "Settings"
 msgstr "Nastavení"
 

@@ -115,7 +115,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 					$this->options['lang'] = $_REQUEST['pntrst_lang'];
 				}
 
-				if ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) &&  "" != $_FILES['pntrst-custom-image']['tmp_name'] ) {
+				if ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && "" != $_FILES['pntrst-custom-image']['tmp_name'] ) {
 					$upload_dir = wp_upload_dir();
 
 					if ( false == $upload_dir["error"] ) {
@@ -388,7 +388,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 							</tr>
 							<tr>
 								<td colspan="2">
-									<img src="<?php echo plugins_url( '../images/pro_screen_1.png', __FILE__ ); ?>" alt="<?php _e( "Example of the site's pages tree", 'bws-pinterest' ); ?>" title="<?php _e( "Example of the site's pages tree", 'bws-pinterest' ); ?>" />
+									<img class="pntrst_pro_version_show" src="<?php echo plugins_url( '../images/pro_screen_1.png', __FILE__ ); ?>" alt="<?php _e( "Example of the site's pages tree", 'bws-pinterest' ); ?>" title="<?php _e( "Example of the site's pages tree", 'bws-pinterest' ); ?>" />
 								</td>
 							</tr>
 						</table>
