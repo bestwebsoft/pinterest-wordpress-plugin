@@ -77,7 +77,7 @@
 			var optionField1 = $( this ).find( ".pntrst-pin-widget-size" );
 			var optionField2 = $( this ).find( ".pntrst-widget-size" );
 			var optionField3 = $( this ).find( ".pntrst-widget-url" );
-			$( this ).find( "select[id*='-pntrst_widget_type']" ).each(function () {
+			$( this ).find( "select[id*='-pntrst_widget_type']" ).each(function() {
 				$( this ).change(function() {
 					if ( 'embedPin' == $( this ).val() ) {
 						optionField1.show();

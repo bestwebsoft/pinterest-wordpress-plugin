@@ -6,7 +6,7 @@ Description: Add Pinterest Follow, Save buttons and profile widgets (Pin, Board,
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.0.8
+Version: 1.0.9
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -148,6 +148,17 @@ if ( ! function_exists( 'pntrst_register_settings' ) ) {
 			$pntrst_options['hide_premium_options'] = array();
 
 			$options_defaults = pntrst_get_options_default();
+			/**
+			 * @deprecated since 1.0.9
+			 * @todo remove after 31.12.2018
+			 */
+			if ( empty( $pntrst_options['pinit_before'] ) && empty( $pntrst_options['pinit_after'] ) && empty( $pntrst_options['pinit_hover'] ) ) {
+				$pntrst_options['pinit_save'] = 0;
+			}
+			if ( empty( $pntrst_options['follow_before'] ) && empty( $pntrst_options['follow_after'] ) ) {
+				$pntrst_options['pinit_follow'] = 0;
+			}
+			/* deprecated (end) */
 			$pntrst_options = array_merge( $options_defaults, $pntrst_options );
 			$pntrst_options['plugin_option_version'] = $pntrst_plugin_info["Version"];
 			update_option( 'pntrst_options', $pntrst_options );
@@ -174,6 +185,8 @@ if ( ! function_exists( 'pntrst_get_options_default' ) ) {
 
 		$options_defaults = array(
 			'plugin_option_version'		=> $pntrst_plugin_info["Version"],
+			'pinit_save'				=> 1,
+			'pinit_follow'				=> 1,
 			'pinit_before'				=> 1,
 			'pinit_after'				=> 0,
 			'pinit_hover'				=> 0,
@@ -263,7 +276,7 @@ if ( ! function_exists( 'pntrst_pinit_js_config' ) ) {
 }
 
 if ( ! function_exists( 'pntrst_custom_hover_img_script' ) ) {
-	function pntrst_custom_hover_img_script () {
+	function pntrst_custom_hover_img_script() {
 		global $pntrst_options;
 		if ( empty( $pntrst_options['pinit_image'] ) && ! empty( $pntrst_options['pinit_hover'] ) ) { ?>
 			<script id='bws-custom-hover-js' src="<?php echo plugins_url( 'js/custom_hover.js', __FILE__ ) ?>" data-custom-button-image="<?php echo $pntrst_options['pinit_custom_image_link'] ?>" async type='text/javascript'></script>
@@ -349,12 +362,12 @@ if ( ! function_exists( 'pntrst_pagination_callback' ) ) {
 
 		if ( 'any' == $pin_it_atts['type'] ) {
 			return '<div class="pntrst-button-wrap">
-								<a data-pin-do="buttonBookmark" data-pin-custom="' . esc_html( $pin_it_atts['custom'] ) . '" href="https://www.pinterest.com/pin/create/button/"><img data-pin-nopin="1" class="pntrst-custom-pin" src="' . esc_url( $pin_it_atts['url'] ) . '" width="60"></a>
-							</div>';
+						<a data-pin-do="buttonBookmark" data-pin-custom="' . esc_html( $pin_it_atts['custom'] ) . '" href="https://www.pinterest.com/pin/create/button/"><img data-pin-nopin="1" class="pntrst-custom-pin" src="' . esc_url( $pin_it_atts['url'] ) . '" width="60"></a>
+					</div>';
 		} elseif ( 'one' == $pin_it_atts['type'] ) {
 			return '<div class="pntrst-button-wrap">
-								<a data-pin-do="buttonPin" data-pin-media="' . esc_url( $pin_it_atts['image_url'] ) . '" data-pin-custom="' . esc_html( $pin_it_atts['custom'] ) . '" href="https://www.pinterest.com/pin/create/button/"><img data-pin-nopin="1" class="pntrst-custom-pin" src="' . esc_url( $pin_it_atts['url'] ) . '" width="60"></a>
-							</div>';
+						<a data-pin-do="buttonPin" data-pin-media="' . esc_url( $pin_it_atts['image_url'] ) . '" data-pin-custom="' . esc_html( $pin_it_atts['custom'] ) . '" href="https://www.pinterest.com/pin/create/button/"><img data-pin-nopin="1" class="pntrst-custom-pin" src="' . esc_url( $pin_it_atts['url'] ) . '" width="60"></a>
+					</div>';
 		}
 	}
 }
@@ -368,8 +381,8 @@ if ( ! function_exists( 'pntrst_pagination_callback' ) ) {
 		), $atts );
 
 		return '<div class="pntrst-button-wrap">
-							<a data-pin-do="buttonFollow" href="https://www.pinterest.com/' . esc_attr( $pntrst_options['profile_url'] ) . '/">' . esc_html( $pin_follow_atts['label'] ) . '</a>
-						</div>';
+					<a data-pin-do="buttonFollow" href="https://www.pinterest.com/' . esc_attr( $pntrst_options['profile_url'] ) . '/">' . esc_html( $pin_follow_atts['label'] ) . '</a>
+				</div>';
 	}
 }
 
@@ -392,7 +405,7 @@ if ( ! class_exists( 'Pinterest_Widget' ) ) {
 				__( 'Pinterest Widget', 'bws-pinterest' ),
 				/* Widget description */
 				array(
-					'description' => __( 'Widget for adding Pinterest Pin, Board, and Profile widgets', 'bws-pinterest' ), /*description displayed in admin */
+					'description' => __( 'Widget for adding Pinterest Pin, Board, and Profile widgets', 'bws-pinterest' ), /* description displayed in admin */
 				)
 			);
 		}
@@ -535,7 +548,7 @@ if ( ! class_exists( 'Pinterest_Widget' ) ) {
 			} else {
 				$instance['pntrst_widget_url'] = '';
 			}
-			/* Check if board or profile widget selected and save widget size options/clean pin widget options. Else clean widget size options and save pin widget options*/
+			/* Check if board or profile widget selected and save widget size options/clean pin widget options. Else clean widget size options and save pin widget options */
 			if ( 'embedPin' !== $new_instance['pntrst_widget_type'] ) {
 				/* clean pin widget size option */
 				$instance['pntrst_pin_widget_size'] = '';

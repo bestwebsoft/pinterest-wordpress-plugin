@@ -63,12 +63,12 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 
 			$message = '';
 
-			if ( isset( $_POST['pntrst_save'] ) && empty( $this->options['pinit_before'] ) && empty( $this->options['pinit_after'] ) && empty( $this->options['pinit_hover'] ) ) {
-				$message = __( '"Save" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' );
+			if ( empty( $this->options['pinit_before'] ) && empty( $this->options['pinit_after'] ) && empty( $this->options['pinit_hover'] ) ) {
+				$message .= __( '"Save" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' ) . '<br />';
 			}
 
-			if ( isset( $_POST['pntrst_follow'] ) && empty( $this->options['follow_before'] ) && empty( $this->options['follow_after'] ) ) {
-				$message = __( '"Follow" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' );
+			if ( empty( $this->options['follow_before'] ) && empty( $this->options['follow_after'] ) ) {
+				$message .= __( '"Follow" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' );
 			}
 			?>
 			<div class="updated bws-notice below-h2" <?php if ( empty( $message ) ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
@@ -83,84 +83,97 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		public function save_options() {
 			global $wpdb, $pntrst_lang_codes;
 
-			if ( ! $this->forbid_view ) {
-				$this->options['pinit_before'] 			= isset( $_REQUEST['pntrst_before'] ) ? 1 : 0;
-				$this->options['pinit_after'] 			= isset( $_REQUEST['pntrst_after'] ) ? 1 : 0;
-				$this->options['pinit_hover'] 			= isset( $_REQUEST['pntrst_hover'] ) ? 1 : 0;
+			$this->options['pinit_save']				= isset( $_REQUEST['pntrst_save'] ) ? 1 : 0;
+			$this->options['pinit_follow']				= isset( $_REQUEST['pntrst_follow'] ) ? 1 : 0;
 
-				if ( empty( $_REQUEST['pntrst_image'] ) || ! empty( $_REQUEST['pntrst_image'] ) ) {
-					$this->options['pinit_image'] = $_REQUEST['pntrst_image'];
-				}
-				if ( empty( $_REQUEST['pntrst_image_shape'] ) || ! empty( $_REQUEST['pntrst_image_shape'] ) ) {
-					$this->options['pinit_image_shape'] = $_REQUEST['pntrst_image_shape'];
-				}
-				if ( empty( $_REQUEST['pntrst_image_size'] ) || ! empty( $_REQUEST['pntrst_image_size'] ) ) {
-					$this->options['pinit_image_size'] = $_REQUEST['pntrst_image_size'];
-				}
-				if ( 'none' == $_REQUEST['pntrst_pin_counts'] || 'above' == $_REQUEST['pntrst_pin_counts'] || 'beside' == $_REQUEST['pntrst_pin_counts'] ) {
-					$this->options['pinit_counts'] = $_REQUEST['pntrst_pin_counts'];
-				}
+			if ( ! empty( $_REQUEST['pntrst_save'] ) ) {
+				$this->options['pinit_before']			= isset( $_REQUEST['pntrst_before'] ) ? 1 : 0;
+				$this->options['pinit_after']			= isset( $_REQUEST['pntrst_after'] ) ? 1 : 0;
+				$this->options['pinit_hover']			= isset( $_REQUEST['pntrst_hover'] ) ? 1 : 0;
+			} else {
+				$this->options['pinit_before']			= 0;
+				$this->options['pinit_after']			= 0;
+				$this->options['pinit_hover']			= 0;
+			}
 
-				$this->options['follow_before'] 			= isset( $_REQUEST['pntrst_follow_before'] ) ? 1 : 0;
-				$this->options['follow_after'] 				= isset( $_REQUEST['pntrst_follow_after'] ) ? 1 : 0;
-				$this->options['follow_button_label'] 		= sanitize_text_field( wp_unslash( $_REQUEST['pntrst_follow_button_label'] ) );
-				$this->options['profile_url'] 				= sanitize_text_field( str_replace( '/', '', $_REQUEST['pntrst_profile_url'] ) );
-				$this->options['use_multilanguage_locale']	= isset( $_REQUEST['pntrst_use_multilanguage_locale'] ) ? 1 : 0;
+			if ( empty( $_REQUEST['pntrst_image'] ) || ! empty( $_REQUEST['pntrst_image'] ) ) {
+				$this->options['pinit_image']			= $_REQUEST['pntrst_image'];
+			}
+			if ( empty( $_REQUEST['pntrst_image_shape'] ) || ! empty( $_REQUEST['pntrst_image_shape'] ) ) {
+				$this->options['pinit_image_shape']		= $_REQUEST['pntrst_image_shape'];
+			}
+			if ( empty( $_REQUEST['pntrst_image_size'] ) || ! empty( $_REQUEST['pntrst_image_size'] ) ) {
+				$this->options['pinit_image_size']		= $_REQUEST['pntrst_image_size'];
+			}
+			if ( 'none' == $_REQUEST['pntrst_pin_counts'] || 'above' == $_REQUEST['pntrst_pin_counts'] || 'beside' == $_REQUEST['pntrst_pin_counts'] ) {
+				$this->options['pinit_counts']			= $_REQUEST['pntrst_pin_counts'];
+			}
 
-				if ( ( ! empty( $this->options['follow_before'] ) || ! empty( $this->options['follow_after'] ) ) && empty( $this->options['profile_url'] ) ) {
-					$error = __( 'Please, enter "Pinterest User ID" to add Follow Button. Settings are not saved.', 'bws-pinterest' );
-				}
+			if ( ! empty( $_REQUEST['pntrst_follow'] ) ) {
+				$this->options['follow_before']			= isset( $_REQUEST['pntrst_follow_before'] ) ? 1 : 0;
+				$this->options['follow_after']			= isset( $_REQUEST['pntrst_follow_after'] ) ? 1 : 0;
+			} else {
+				$this->options['follow_before']			= 0;
+				$this->options['follow_after']			= 0;
+			}
 
-				if ( ! empty( $_REQUEST['pntrst_lang'] ) && array_key_exists( $_REQUEST['pntrst_lang'], $pntrst_lang_codes ) ) {
-					$this->options['lang'] = $_REQUEST['pntrst_lang'];
-				}
+			$this->options['follow_button_label']		= sanitize_text_field( wp_unslash( $_REQUEST['pntrst_follow_button_label'] ) );
+			$this->options['profile_url']				= sanitize_text_field( str_replace( '/', '', $_REQUEST['pntrst_profile_url'] ) );
+			$this->options['use_multilanguage_locale']	= isset( $_REQUEST['pntrst_use_multilanguage_locale'] ) ? 1 : 0;
 
-				if ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && "" != $_FILES['pntrst-custom-image']['tmp_name'] ) {
-					$upload_dir = wp_upload_dir();
+			if ( ( ! empty( $this->options['follow_before'] ) || ! empty( $this->options['follow_after'] ) ) && empty( $this->options['profile_url'] ) ) {
+				$error = __( 'Please, enter "Pinterest User ID" to add Follow Button. Settings are not saved.', 'bws-pinterest' );
+			}
 
-					if ( false == $upload_dir["error"] ) {
-						/* create image directory in WP /uploads */
-						$pntrst_custom_img_folder = $upload_dir['basedir'] . '/pinterest-image';
-						if ( ( is_dir( $pntrst_custom_img_folder ) || wp_mkdir_p( $pntrst_custom_img_folder, 0755 ) ) && isset( $_FILES['pntrst-custom-image'] ) && empty( $_REQUEST['pntrst_image'] ) && is_uploaded_file( $_FILES['pntrst-custom-image']['tmp_name'] ) ) {
+			if ( ! empty( $_REQUEST['pntrst_lang'] ) && array_key_exists( $_REQUEST['pntrst_lang'], $pntrst_lang_codes ) ) {
+				$this->options['lang'] = $_REQUEST['pntrst_lang'];
+			}
 
-								$filename = $_FILES['pntrst-custom-image']['tmp_name'];
-								$ext = substr( $_FILES['pntrst-custom-image']['name'], 1 + strrpos( $_FILES['pntrst-custom-image']['name'], '.' ) );
-								$max_image_size = 512 * 1024;
-								$valid_types = array( 'jpg', 'jpeg', 'png' );
-								/*check if valid file size */
-								if ( filesize( $filename ) > $max_image_size ) {
-									$error = sprintf( __( 'Error: File size %1s', 'bws-pinterest-pro' ), '> 512Kb' );
-								/*check if valid file type */
-								} elseif ( ! in_array( strtolower( $ext ), $valid_types ) ) {
-									$error = __( 'Error: Invalid file type', 'bws-pinterest-pro' );
+			if ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && '' != $_FILES['pntrst-custom-image']['tmp_name'] ) {
+				$upload_dir = wp_upload_dir();
+
+				if ( false == $upload_dir["error"] ) {
+					/* create image directory in WP /uploads */
+					$pntrst_custom_img_folder = $upload_dir['basedir'] . '/pinterest-image';
+					if ( ( is_dir( $pntrst_custom_img_folder ) || wp_mkdir_p( $pntrst_custom_img_folder, 0755 ) ) && isset( $_FILES['pntrst-custom-image'] ) && empty( $_REQUEST['pntrst_image'] ) && is_uploaded_file( $_FILES['pntrst-custom-image']['tmp_name'] ) ) {
+
+							$filename = $_FILES['pntrst-custom-image']['tmp_name'];
+							$ext = substr( $_FILES['pntrst-custom-image']['name'], 1 + strrpos( $_FILES['pntrst-custom-image']['name'], '.' ) );
+							$max_image_size = 512 * 1024;
+							$valid_types = array( 'jpg', 'jpeg', 'png' );
+							/*check if valid file size */
+							if ( filesize( $filename ) > $max_image_size ) {
+								$error = sprintf( __( 'Error: File size %1s', 'bws-pinterest-pro' ), '> 512Kb' );
+							/*check if valid file type */
+							} elseif ( ! in_array( strtolower( $ext ), $valid_types ) ) {
+								$error = __( 'Error: Invalid file type', 'bws-pinterest-pro' );
+							} else {
+								/* Construction to rename downloading file */
+								$file_ext = wp_check_filetype( $_FILES['pntrst-custom-image']['name'] );
+								$new_name = 'pinterest-button';
+								$namefile = $new_name . '.' . $file_ext['ext'];
+								$uploadfile = $pntrst_custom_img_folder . '/' . $namefile;
+								/* Move uploaded file to image directory /uploads/pinterest-image */
+								if ( move_uploaded_file( $_FILES['pntrst-custom-image']['tmp_name'], $uploadfile ) ) {
+									/* link to uploaded file */
+									$this->options['pinit_custom_image_link'] = $upload_dir['baseurl'] . '/pinterest-image/pinterest-button' . '.' . $file_ext['ext'];
 								} else {
-									/* Construction to rename downloading file */
-									$file_ext = wp_check_filetype( $_FILES['pntrst-custom-image']['name'] );
-									$new_name = 'pinterest-button';
-									$namefile = $new_name . '.' . $file_ext['ext'];
-									$uploadfile = $pntrst_custom_img_folder . '/' . $namefile;
-									/* Move uploaded file to image directory /uploads/pinterest-image */
-									if ( move_uploaded_file( $_FILES['pntrst-custom-image']['tmp_name'], $uploadfile ) ) {
-										/* link to uploaded file */
-										$this->options['pinit_custom_image_link'] = $upload_dir['baseurl'] . '/pinterest-image/pinterest-button' . '.' . $file_ext['ext'];
-									} else {
-										$error = __( 'Error: moving file failed', 'bws-pinterest-pro' );
-									}
+									$error = __( 'Error: moving file failed', 'bws-pinterest-pro' );
 								}
-						}
-					} else {
-						$error = __( "Can't find upload directory path. Settings are not saved.", 'bws-pinterest-pro' );
+							}
 					}
-				} elseif ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $this->options['pinit_custom_image_link'] ) ) {
-					$error = __( 'Error: select the upload file', 'bws-pinterest-pro' );
+				} else {
+					$error = __( "Can't find upload directory path. Settings are not saved.", 'bws-pinterest-pro' );
 				}
+			} elseif ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $this->options['pinit_custom_image_link'] ) ) {
+				$error = __( 'Error: select the upload file', 'bws-pinterest-pro' );
+			}
 
-				$this->options = apply_filters( 'pntrst_before_save_options', $this->options );
-				if ( empty( $error ) ) {
-					/* Update options in the database */
-					update_option( 'pntrst_options', $this->options );
-					$message = __( 'Settings saved', 'bws-pinterest' );
-				}
+			$this->options = apply_filters( 'pntrst_before_save_options', $this->options );
+			if ( empty( $error ) ) {
+				/* Update options in the database */
+				update_option( 'pntrst_options', $this->options );
+				$message = __( 'Settings saved', 'bws-pinterest' );
 			}
 
 			return compact( 'message', 'notice', 'error' );
@@ -194,12 +207,12 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 					<td>
 						<fieldset>
 							<label>
-								<input type="checkbox" name="pntrst_save" value="1" <?php checked( 1, $this->options['pinit_before'] || $this->options['pinit_after'] || $this->options['pinit_hover'] ); ?> />
+								<input type="checkbox" name="pntrst_save" value="1" <?php checked( 1, $this->options['pinit_save'] ); ?> />
 								<?php _e( 'Save', 'bws-pinterest' ); ?>
 							</label>
 							<br />
 							<label>
-								<input type="checkbox" name="pntrst_follow" value="1" <?php checked( 1, $this->options['follow_before'] || $this->options['follow_after'] ); ?> />
+								<input type="checkbox" name="pntrst_follow" value="1" <?php checked( 1, $this->options['pinit_follow'] ); ?> />
 								<?php _e( 'Follow', 'bws-pinterest' ); ?>
 							</label>
 						</fieldset>

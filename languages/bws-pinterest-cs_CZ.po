@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bws-pinterest\n"
-"POT-Creation-Date: 2018-01-15 13:21+0200\n"
-"PO-Revision-Date: 2018-01-15 13:21+0200\n"
+"POT-Creation-Date: 2018-04-12 14:25+0300\n"
+"PO-Revision-Date: 2018-04-12 14:25+0300\n"
 "Last-Translator: Mik013\n"
 "Language-Team: Mik013\n"
 "Language: cs_CZ\n"
@@ -152,7 +152,8 @@ msgstr "Vlastní URL obrázku"
 
 #: bws-pinterest.php:795
 msgid "FAQ"
-msgstr "Často kladené otázky (FAQ)"
+msgstr ""
+"Časté dotazy <acronym title=\"Frequently asked questions\">(FAQ)</acronym>"
 
 #: bws-pinterest.php:796
 msgid "Support"
@@ -179,20 +180,24 @@ msgid ""
 "\"Save\" button location is not selected. The button will be displayed only "
 "via shortcode."
 msgstr ""
+"Není zvoleno umístění tlačítka \"Uložit\". Tlačítko se zobrazí pouze "
+"prostřednictvím zkráceného kódu."
 
 #: includes/class-pntrst-settings.php:71
 msgid ""
 "\"Follow\" button location is not selected. The button will be displayed "
 "only via shortcode."
 msgstr ""
+"Není zvoleno umístění tlačítka \"Sledovat\". Tlačítko se zobrazí pouze "
+"prostřednictvím zkráceného kódu."
 
 #: includes/class-pntrst-settings.php:111
 msgid ""
 "Please, enter \"Pinterest User ID\" to add Follow Button. Settings are not "
 "saved."
 msgstr ""
-"Zadejte \"Pinterest User ID\" pro přidání tlačítka Follow. Nastavení se "
-"neuloží."
+"Pro přidání tlačítka Sledovat, zadejte \"ID Pinterest uživatele\". Nastavení "
+"nebylo uloženo."
 
 #: includes/class-pntrst-settings.php:132
 #, php-format
@@ -209,7 +214,7 @@ msgstr "Chyba: Soubor se nepodařilo přesunout"
 
 #: includes/class-pntrst-settings.php:152
 msgid "Can't find upload directory path. Settings are not saved."
-msgstr "Nelze najít cestu k adresáři. Nastavení se neuloží."
+msgstr "Nelze najít cestu k adresáři upload. Nastavení nebylo uloženo."
 
 #: includes/class-pntrst-settings.php:155
 msgid "Error: select the upload file"
@@ -318,11 +323,11 @@ msgstr "Tvar tlačítka"
 
 #: includes/class-pntrst-settings.php:284
 msgid "Square"
-msgstr "Hranatý"
+msgstr "Hranaté"
 
 #: includes/class-pntrst-settings.php:285
 msgid "Round"
-msgstr "Kruhový"
+msgstr "Kulaté"
 
 #: includes/class-pntrst-settings.php:290
 msgid "Button Size"
@@ -362,14 +367,14 @@ msgstr "Přidat Pinterest do widgetu."
 
 #: includes/class-pntrst-settings.php:351
 msgid "Navigate to Widgets"
-msgstr "Přejít do widgetů"
+msgstr "Přejít k widgetům"
 
 #: includes/class-pntrst-settings.php:352
 msgid ""
 "Add Pinterest button(-s) to your posts, pages or custom post types using the "
 "following shortcode:"
 msgstr ""
-"Přidejte tlačítko Pinterest (-s) na své příspěvky, stránky nebo vlastní typy "
+"Přidejte Pinterest tlačítko/a na své příspěvky, stránky nebo vlastní typy "
 "příspěvků pomocí následujícího zkráceného kódu:"
 
 #: includes/class-pntrst-settings.php:369
@@ -391,142 +396,3 @@ msgstr "Zobrazit URL pro stránky"
 #: includes/class-pntrst-settings.php:391
 msgid "Example of the site's pages tree"
 msgstr "Příklad stromu stránek"
-
-#~ msgid ""
-#~ "The location of the \"Save\" button is not selected. Your changes have "
-#~ "not been saved."
-#~ msgstr ""
-#~ "Umístění tlačítka \"Uložit\" není vybráno. Vaše změny nebyly uloženy."
-
-#~ msgid ""
-#~ "The location of the \"Follow\" button is not selected. Your changes have "
-#~ "not been saved."
-#~ msgstr ""
-#~ "Umístění tlačítka \"Sledovat\" není vybráno. Vaše změny nebyly uloženy."
-
-#~ msgid "Widget for adding Pinterest Pin, Board and Profile widgets"
-#~ msgstr "Widget pro přidání Pinterest Pin, widgetu Nástěnka a Profil"
-
-#~ msgid ""
-#~ "Please, enter \"Pinterest User URL\" to add Follow Button. Settings are "
-#~ "not saved."
-#~ msgstr ""
-#~ "Pro přidání tlačítka, vložte \"URL uživatele Pinterest\". Nastavení není "
-#~ "uloženo."
-
-#~ msgid ""
-#~ "Add a Pinterest button(-s) to your posts, pages or custom post types by "
-#~ "using the following shortcode:"
-#~ msgstr ""
-#~ "Přidat Pinterest tlačítko/a do příspěvků, stránek, vlastních typů "
-#~ "příspěvků pomocí následujícího zkráceného kódu:"
-
-#~ msgid "Example of site pages' tree"
-#~ msgstr "Příklad stromu stránku webu"
-
-#~ msgid "Before the content"
-#~ msgstr "Před obsahem"
-
-#~ msgid "After the content"
-#~ msgstr "Za obsahem"
-
-#~ msgid ""
-#~ "Please, enter \"Pinterest user URL\" to add Follow Button. Settings are "
-#~ "not saved."
-#~ msgstr ""
-#~ "Pro přidání tlačítka, zadejte \"URL uživatele Pinterest\". Nastavení není "
-#~ "uloženo."
-
-#~ msgid "Pinterest user URL"
-#~ msgstr "URL uživatele Pinterest"
-
-#~ msgid "Button image type"
-#~ msgstr "Typ zobrazovaného tlačítka"
-
-#~ msgid "Min height"
-#~ msgstr "Min výška"
-
-#~ msgid "Min width%1s. If emtpy width: auto"
-#~ msgstr "Min šířka %1s. Pokud není vyplněno - automaticky"
-
-#~ msgid "All plugin settings were restored."
-#~ msgstr "Byla obnovena všechna nastavení pluginu."
-
-#~ msgid "Extra settings"
-#~ msgstr "Další nastavení"
-
-#~ msgid "Custom code"
-#~ msgstr "Vlastní kód"
-
-#~ msgid "Go PRO"
-#~ msgstr "Přejít na PRO"
-
-#~ msgid ""
-#~ "If you would like to add Pinterest buttons or widgets to your page or "
-#~ "post, please use %s button"
-#~ msgstr ""
-#~ "Pokud chcete přidat Pinterest tlačítka na vaši stránku nebo příspěvek, "
-#~ "použijte tlačítko %s "
-
-#~ msgid ""
-#~ "You can add buttons or widgets to your content by clicking on %1s button "
-#~ "in the content edit block using the Visual mode. If the button isn't "
-#~ "displayed, please use the shortcode %2s for Pin It button, %3s for Follow "
-#~ "button or %4s for Pinteresr widget"
-#~ msgstr ""
-#~ "Pinterest tlačítka nebo widget můžete na vaši stránku nebo příspěvek "
-#~ "přidat kliknutím na tlačítko %1s v bloku úprav obsahu ve vizuálním módu. "
-#~ "Pokud tlačítko není zobrazeno, použijte zkrácený kód %2s pro tlačítko "
-#~ "Připnout, %3s pro tlačítko Sledovat nebo %4s pro widget"
-
-#~ msgid "Example"
-#~ msgstr "Příklad"
-
-#~ msgid "Settings for Pin It Button"
-#~ msgstr "Nastavení tlačítka Připnout"
-
-#~ msgid "Pin It Button place"
-#~ msgstr "Umístění tlačítka Připnout"
-
-#~ msgid "Button Color"
-#~ msgstr "Barva tlačítka"
-
-#~ msgid "Red"
-#~ msgstr "červená"
-
-#~ msgid "Gray"
-#~ msgstr "šedá"
-
-#~ msgid "White"
-#~ msgstr "bílá"
-
-#~ msgid "Works only if the square image is chosen"
-#~ msgstr "Funguje pouze v kombinaci s hranatým tvarem"
-
-#~ msgid "Pin Counts"
-#~ msgstr "Počet Pinů"
-
-#~ msgid "None"
-#~ msgstr "Nezobrazovat"
-
-#~ msgid "Settings for Follow Button"
-#~ msgstr "Nastavení tlačítka Sledovat"
-
-#~ msgid "Follow Button place"
-#~ msgstr "Umístění tlačítka Sledovat"
-
-#~ msgid "Follow Button label"
-#~ msgstr "Popisek tlačítka Sledovat"
-
-#~ msgid "Save Changes"
-#~ msgstr "Uložit změny"
-
-#~ msgid "If you upgrade to Pro version all your settings will be saved."
-#~ msgstr ""
-#~ "Pokud upgradujete na verzi Pro všechna vaše nastavení budou zachována."
-
-#~ msgid "Unlock premium options by upgrading to Pro version"
-#~ msgstr "Odemkněte prémiové možnosti upgradem na Pro verzi"
-
-#~ msgid "Pin It button"
-#~ msgstr "Tlačítko Připnout"
