@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 3.9
-Tested up to: 4.9.6
-Stable tag: 1.0.9
+Tested up to: 5.0.2
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -136,6 +136,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.1.0 : 21.12.2018 =
+* Update : All functionality was updated for WordPress 5.0.2.
+* Bugfix : Fixed small bugs
+
 = V1.0.9 - 12.06.2018 =
 * Bugfix : The bug with incorrect saving of the plugin settings has been fixed.
 * Bugfix : The bug with incorrect saving of the custom image has been fixed.
@@ -179,6 +183,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.1.0 =
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
 
 = V1.0.9 =
 * Bugs fixed.

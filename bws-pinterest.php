@@ -6,12 +6,12 @@ Description: Add Pinterest Follow, Save buttons and profile widgets (Pin, Board,
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.0.9
+Version: 1.1.0
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2018  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 3, as
@@ -216,6 +216,13 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 		$page = new Pntrst_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
 		<div id="pntrst_settings_form" class="wrap">
 			<h1><?php _e( 'Pinterest Settings', 'bws-pinterest' ); ?></h1>
+			<noscript>
+                <div class="error below-h2">
+                    <p><strong><?php _e( 'WARNING', 'bws-pinterest' ); ?>
+                            :</strong> <?php _e( 'The plugin works correctly only if JavaScript is enabled.', 'bws-pinterest' ); ?>
+                    </p>
+                </div>
+            </noscript>
 			<?php $page->display_content(); ?>
 		</div>
 	<?php }

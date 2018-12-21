@@ -383,6 +383,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 			<?php $this->help_phrase(); ?>
 			<hr />
 				<div class="bws_pro_version_bloc">
+					<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'bws-pinterest' ); ?>"></button>
 					<div class="bws_pro_version_table_bloc">
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
