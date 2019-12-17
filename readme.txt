@@ -1,10 +1,10 @@
-=== Pinterest by BestWebSoft ===
+=== Image Pinning by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
-Requires at least: 3.9
-Tested up to: 5.2.2
-Stable tag: 1.1.1
+Requires at least: 4.1
+Tested up to: 5.3.1
+Stable tag: 1.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Add Pinterest Follow, Save buttons and profile widgets (Pin, Board, Profile) to 
 
 == Description ==
 
-Pinterest plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
+Image Pinning plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
 
 Customize the appearance, configure settings, and get more social traffic to your website!
 
@@ -97,7 +97,7 @@ Some of these translations are not complete. We are constantly adding new featur
 * [Google +1](https://bestwebsoft.com/products/wordpress/plugins/google-plus-one/?k=d4f7f1fae309de330b48b9fcf64c6e66) - Add Google +1 Share, Follow, Hangout buttons and profile badge to WordPress posts, pages and widgets.
 * [LinkedIn](https://bestwebsoft.com/products/wordpress/plugins/linkedin/?k=c54bef8c06dceac21abdf5a77bb3cf9c) - Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. 5 plugins included – profile, insider, etc.
 * [Twitter](https://bestwebsoft.com/products/wordpress/plugins/twitter/?k=712e57dc3bbc311b2f5199e76c18f587) - Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts, pages and widgets.
-* [Facebook Button](https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61) - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
+* [Like & Share](https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61) - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
 
 == Installation ==
 
@@ -136,8 +136,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
-= V1.1.1 : 4.09.2018 =
-* Update: The deactivation feedback has been changed. Misleading buttons have been removed.
+= V1.1.2 - 13.12.2019 =
+* Update : Plugin was renamed.
+* Bugfix : Vulnerabilities and security issues were fixed.
+
+= V1.1.1 - 04.09.2019 =
+* Update : The deactivation feedback has been changed. Misleading buttons have been removed.
 
 = V1.1.0 : 21.12.2018 =
 * Update : All functionality was updated for WordPress 5.0.2.
@@ -186,6 +190,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.1.2 =
+* The compatibility with new WordPress version updated.
 
 = V1.1.1 =
 * Usability improved.

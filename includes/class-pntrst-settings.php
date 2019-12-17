@@ -3,8 +3,6 @@
  * Displays the content on the plugin settings page
  */
 
-require_once( dirname( dirname( __FILE__ ) ) . '/bws_menu/class-bws-settings.php' );
-
 if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 	class Pntrst_Settings_Tabs extends Bws_Settings_Tabs {
 		/**
@@ -69,8 +67,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 
 			if ( empty( $this->options['follow_before'] ) && empty( $this->options['follow_after'] ) ) {
 				$message .= __( '"Follow" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' );
-			}
-			?>
+			} ?>
 			<div class="updated bws-notice below-h2" <?php if ( empty( $message ) ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
 		<?php }
 
@@ -81,7 +78,9 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		 * @return array    The action results
 		 */
 		public function save_options() {
-			global $wpdb, $pntrst_lang_codes;
+			global $pntrst_lang_codes;
+
+			$message = $notice = $error = '';
 
 			$this->options['pinit_save']				= isset( $_REQUEST['pntrst_save'] ) ? 1 : 0;
 			$this->options['pinit_follow']				= isset( $_REQUEST['pntrst_follow'] ) ? 1 : 0;
@@ -96,17 +95,12 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				$this->options['pinit_hover']			= 0;
 			}
 
-			if ( empty( $_REQUEST['pntrst_image'] ) || ! empty( $_REQUEST['pntrst_image'] ) ) {
-				$this->options['pinit_image']			= $_REQUEST['pntrst_image'];
-			}
-			if ( empty( $_REQUEST['pntrst_image_shape'] ) || ! empty( $_REQUEST['pntrst_image_shape'] ) ) {
-				$this->options['pinit_image_shape']		= $_REQUEST['pntrst_image_shape'];
-			}
-			if ( empty( $_REQUEST['pntrst_image_size'] ) || ! empty( $_REQUEST['pntrst_image_size'] ) ) {
-				$this->options['pinit_image_size']		= $_REQUEST['pntrst_image_size'];
-			}
-			if ( 'none' == $_REQUEST['pntrst_pin_counts'] || 'above' == $_REQUEST['pntrst_pin_counts'] || 'beside' == $_REQUEST['pntrst_pin_counts'] ) {
-				$this->options['pinit_counts']			= $_REQUEST['pntrst_pin_counts'];
+			$this->options['pinit_image'] = ! empty( $_REQUEST['pntrst_image'] ) ? 1 : 0;
+			$this->options['pinit_image_shape'] = ! empty( $_REQUEST['pntrst_image_shape'] ) ? 1 : 0;
+			$this->options['pinit_image_size'] = ! empty( $_REQUEST['pntrst_image_size'] ) ? 1 : 0;
+			
+			if ( isset( $_REQUEST['pntrst_pin_counts'] ) && in_array( $_REQUEST['pntrst_pin_counts'], array( 'none', 'above', 'beside' ) ) ) {
+				$this->options['pinit_counts'] = $_REQUEST['pntrst_pin_counts'];
 			}
 
 			if ( ! empty( $_REQUEST['pntrst_follow'] ) ) {
@@ -129,7 +123,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				$this->options['lang'] = $_REQUEST['pntrst_lang'];
 			}
 
-			if ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && '' != $_FILES['pntrst-custom-image']['tmp_name'] ) {
+			if ( ! empty( $_FILES['pntrst-custom-image']['tmp_name'] ) ) {
 				$upload_dir = wp_upload_dir();
 
 				if ( false == $upload_dir["error"] ) {
@@ -137,12 +131,11 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 					$pntrst_custom_img_folder = $upload_dir['basedir'] . '/pinterest-image';
 					if ( ( is_dir( $pntrst_custom_img_folder ) || wp_mkdir_p( $pntrst_custom_img_folder, 0755 ) ) && isset( $_FILES['pntrst-custom-image'] ) && empty( $_REQUEST['pntrst_image'] ) && is_uploaded_file( $_FILES['pntrst-custom-image']['tmp_name'] ) ) {
 
-							$filename = $_FILES['pntrst-custom-image']['tmp_name'];
 							$ext = substr( $_FILES['pntrst-custom-image']['name'], 1 + strrpos( $_FILES['pntrst-custom-image']['name'], '.' ) );
 							$max_image_size = 512 * 1024;
 							$valid_types = array( 'jpg', 'jpeg', 'png' );
 							/*check if valid file size */
-							if ( filesize( $filename ) > $max_image_size ) {
+							if ( filesize( $_FILES['pntrst-custom-image']['tmp_name'] ) > $max_image_size ) {
 								$error = sprintf( __( 'Error: File size %1s', 'bws-pinterest-pro' ), '> 512Kb' );
 							/*check if valid file type */
 							} elseif ( ! in_array( strtolower( $ext ), $valid_types ) ) {
@@ -189,8 +182,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			}
 			$all_plugins = get_plugins(); ?>
-
-			<h3 class="bws_tab_label"><?php _e( 'Pinterest Settings', 'bws-pinterest' ); ?></h3>
+			<h3 class="bws_tab_label"><?php _e( 'Image Pinning Settings', 'bws-pinterest' ); ?></h3>
 			<?php $this->help_phrase(); ?>
 			<hr />
 			<div class="bws_tab_sub_label"><?php _e( 'General', 'bws-pinterest' ); ?></div>
@@ -230,7 +222,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 								echo '>' . esc_html( $value ) . '</option>';
 							} ?>
 						</select>
-						<div class="bws_info"><?php _e( 'Select the default language for Pinterest button(-s).', 'bws-pinterest' ); ?></div>
+						<div class="bws_info"><?php _e( 'Select the default language for Image Pinning button(-s).', 'bws-pinterest' ); ?></div>
 					</td>
 				</tr>
 				<tr>
@@ -312,8 +304,10 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 					<th scope="row"><?php _e( 'Show Pin Count', 'bws-pinterest' ); ?></th>
 					<td>
 						<fieldset>
-							<label><input name="pntrst_pin_counts" type="radio" value="none" <?php checked( 'none', $this->options['pinit_counts'] ); ?> /><?php _e( 'Not shown', 'bws-pinterest' ); ?></label><br />
-							<label><input name="pntrst_pin_counts" type="radio" value="above" <?php checked( 'above', $this->options['pinit_counts'] ); ?> /><?php _e( 'Above the button', 'bws-pinterest' ); ?></label><br />
+							<label><input name="pntrst_pin_counts" type="radio" value="none" <?php checked( 'none', $this->options['pinit_counts'] ); ?> /><?php _e( 'Not shown', 'bws-pinterest' ); ?></label>
+							<br />
+							<label><input name="pntrst_pin_counts" type="radio" value="above" <?php checked( 'above', $this->options['pinit_counts'] ); ?> /><?php _e( 'Above the button', 'bws-pinterest' ); ?></label>
+							<br />
 							<label><input name="pntrst_pin_counts" type="radio" value="beside" <?php checked( 'beside', $this->options['pinit_counts'] ); ?> /><?php _e( 'Beside the button', 'bws-pinterest' ); ?></label>
 						</fieldset>
 					</td>
@@ -358,11 +352,11 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		public function display_metabox() { ?>
 			<div class="postbox">
 				<h3 class="hndle">
-					<?php _e( 'Pinterest Buttons Shortcode', 'bws-pinterest' ); ?>
+					<?php _e( 'Image Pinning Buttons Shortcode', 'bws-pinterest' ); ?>
 				</h3>
 				<div class="inside">
-					<p><?php _e( 'Add Pinterest to a widget.', 'bws-pinterest' ); ?> <a href="widgets.php"><?php _e( 'Navigate to Widgets', 'bws-pinterest' ); ?></a></p>
-					<?php _e( "Add Pinterest button(-s) to your posts, pages or custom post types using the following shortcode:", 'bws-pinterest' ); ?>
+					<p><?php _e( 'Add Image Pinning to a widget.', 'bws-pinterest' ); ?> <a href="widgets.php"><?php _e( 'Navigate to Widgets', 'bws-pinterest' ); ?></a></p>
+					<?php _e( "Add Image Pinning button(-s) to your posts, pages or custom post types using the following shortcode:", 'bws-pinterest' ); ?>
 					<div class="bws_margined_box">
 						<?php _e( 'Save', 'bws-pinterest' );
 						bws_shortcode_output( '[bws_pinterest_pin_it]' ); ?>
@@ -389,7 +383,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 						<table class="form-table bws_pro_version">
 							<tr>
 								<td colspan="2">
-									<?php _e( 'Please choose the necessary post types (or single pages) where Pinterest buttons will be displayed:', 'bws-pinterest' ); ?>
+									<?php _e( 'Please choose the necessary post types (or single pages) where Image Pinning buttons will be displayed:', 'bws-pinterest' ); ?>
 								</td>
 							</tr>
 							<tr>

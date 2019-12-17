@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Pinterest by BestWebSoft
+Plugin Name: Image Pinning by BestWebSoft
 Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/pinterest/
 Description: Add Pinterest Follow, Save buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.1.1
+Version: 1.1.2
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -32,8 +32,8 @@ if ( ! function_exists( 'pntrst_admin_menu' ) ) {
 	function pntrst_admin_menu() {
 		global $submenu, $pntrst_plugin_info, $wp_version;
 
-		$settings = add_menu_page( __( 'Pinterest Settings', 'bws-pinterest' ), 'Pinterest', 'manage_options', 'pinterest.php', 'pntrst_settings_page', 'none' );
-		add_submenu_page( 'pinterest.php', __( 'Pinterest Settings', 'bws-pinterest' ), __( 'Settings', 'bws-pinterest' ), 'manage_options', 'pinterest.php', 'pntrst_settings_page' );
+		$settings = add_menu_page( __( 'Image Pinning Settings', 'bws-pinterest' ), 'Image Pinning', 'manage_options', 'pinterest.php', 'pntrst_settings_page', 'none' );
+		add_submenu_page( 'pinterest.php', __( 'Image Pinning Settings', 'bws-pinterest' ), __( 'Settings', 'bws-pinterest' ), 'manage_options', 'pinterest.php', 'pntrst_settings_page' );
 		add_submenu_page( 'pinterest.php', 'BWS Panel', 'BWS Panel', 'manage_options', 'pntrst-bws-panel', 'bws_add_menu_render' );
 		/*pls */
 		if ( isset( $submenu['pinterest.php'] ) ) {
@@ -73,7 +73,7 @@ if ( ! function_exists ( 'pntrst_init' ) ) {
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
 
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $pntrst_plugin_info, '3.9' );/* check compatible with current WP version */
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $pntrst_plugin_info, '4.1' );/* check compatible with current WP version */
 
 		/* Call register settings function pntrst_register_settings() */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && ( "pinterest.php" == $_GET['page'] || "social-buttons.php" == $_GET['page'] ) ) ) {
@@ -89,41 +89,25 @@ if ( ! function_exists ( 'pntrst_init' ) ) {
 if ( ! function_exists( 'pntrst_admin_init' ) ) {
 	function pntrst_admin_init() {
 		/* Add variable for bws_menu */
-		global $bws_plugin_info, $pntrst_plugin_info, $bws_shortcode_list;
+		global $pagenow, $bws_plugin_info, $pntrst_plugin_info, $bws_shortcode_list, $pntrst_options;
 
 		/* Function for bws menu */
-		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) ) {
+		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '547', 'version' => $pntrst_plugin_info["Version"] );
 		}
 
 		/* add Pinterest to global $bws_shortcode_list */
-		$bws_shortcode_list['pntrst'] = array( 'name' => 'Pinterest', 'js_function' => 'pntrst_shortcode_init' );
-	}
-}
+		$bws_shortcode_list['pntrst'] = array( 'name' => 'Image Pinning', 'js_function' => 'pntrst_shortcode_init' );
 
-/* Enqueue plugin scripts and styles for admin */
-if ( ! function_exists ( 'pntrst_enqueue' ) ) {
-	function pntrst_enqueue( $hook ) {
-		wp_enqueue_style( 'pntrst_icon', plugins_url( 'css/icon.css', __FILE__ ) );
-		if ( isset( $_GET['page'] ) && ( 'pinterest.php' == $_GET['page'] || 'social-buttons.php' == $_GET['page'] ) ) {
-			wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
-			wp_enqueue_script( 'pntrst_script', plugins_url( 'js/script.js', __FILE__ ) );
-
-			bws_plugins_include_codemirror();
-			bws_enqueue_settings_scripts();
+		/*pls show banner go pro */
+		if ( 'plugins.php' == $pagenow ) {
+			if ( empty( $pntrst_options ) ) {
+				pntrst_register_settings();
+			}
+			if ( function_exists( 'bws_plugin_banner_go_pro' ) )
+				bws_plugin_banner_go_pro( $pntrst_options, $pntrst_plugin_info, 'pntrst', 'pinterest', '964a97a5409b7ba8f0744b6f28a0372c', '547', 'bws-pinterest' );
 		}
-
-		if ( 'widgets.php' == $hook || 'customize.php' == $hook ) {
-			wp_enqueue_script( 'pntrst_script', plugins_url( 'js/script.js', __FILE__ ) );
-			wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
-		}
-	}
-}
-
-/* Enqueue plugin scripts and styles */
-if ( ! function_exists( 'pntrst_script_enqueue' ) ) {
-	function pntrst_script_enqueue() {
-		wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
+		/* end show banner go settings pls*/
 	}
 }
 
@@ -211,11 +195,13 @@ if ( ! function_exists( 'pntrst_get_options_default' ) ) {
 
 /* Plugin's settings page in the admin */
 if ( ! function_exists( 'pntrst_settings_page' ) ) {
-	function pntrst_settings_page() {
+	function pntrst_settings_page() {		
+		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+			require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/includes/class-pntrst-settings.php' );
 		$page = new Pntrst_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
 		<div id="pntrst_settings_form" class="wrap">
-			<h1><?php _e( 'Pinterest Settings', 'bws-pinterest' ); ?></h1>
+			<h1><?php _e( 'Image Pinning Settings', 'bws-pinterest' ); ?></h1>
 			<noscript>
                 <div class="error below-h2">
                     <p><strong><?php _e( 'WARNING', 'bws-pinterest' ); ?>
@@ -228,76 +214,107 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 	<?php }
 }
 
-/* Add pinterest.js */
-if ( ! function_exists( 'pntrst_pinit_js_config' ) ) {
-	function pntrst_pinit_js_config() {
-		global $pntrst_options, $pntrst_lang_codes, $mltlngg_current_language;
-		$return_string = "async";
+/* Enqueue plugin scripts and styles for admin */
+if ( ! function_exists ( 'pntrst_enqueue' ) ) {
+	function pntrst_enqueue( $hook ) {
+		wp_enqueue_style( 'pntrst_icon', plugins_url( 'css/icon.css', __FILE__ ) );
+		if ( isset( $_GET['page'] ) && ( 'pinterest.php' == $_GET['page'] || 'social-buttons.php' == $_GET['page'] ) ) {
+			wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
+			wp_enqueue_script( 'pntrst_script', plugins_url( 'js/script.js', __FILE__ ) );
 
-		/* Add multilanguage options */
-		if ( ! empty( $pntrst_options['use_multilanguage_locale'] ) && isset( $mltlngg_current_language ) ) {
-			if ( array_key_exists( $mltlngg_current_language, $pntrst_lang_codes ) ) {
-				$pntrst_locale = $mltlngg_current_language;
-			} else {
-				$pntrst_locale_from_multilanguage = str_replace( '_', '-', $mltlngg_current_language );
-				if ( array_key_exists( $pntrst_locale_from_multilanguage, $pntrst_lang_codes ) ) {
-					$pntrst_locale = $pntrst_locale_from_multilanguage;
-				} else {
-					$pntrst_locale_from_multilanguage = explode( '_', $mltlngg_current_language );
-					if ( is_array( $pntrst_locale_from_multilanguage ) && array_key_exists( $pntrst_locale_from_multilanguage[0], $pntrst_lang_codes ) ) {
-						$pntrst_locale = $pntrst_locale_from_multilanguage[0];
-					}
-				}
-			}
+			bws_plugins_include_codemirror();
+			bws_enqueue_settings_scripts();
 		}
 
-		if ( empty( $pntrst_locale ) ) {
-			$pntrst_locale = $pntrst_options['lang'];
+		if ( 'widgets.php' == $hook || 'customize.php' == $hook ) {
+			wp_enqueue_script( 'pntrst_script', plugins_url( 'js/script.js', __FILE__ ) );
+			wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
 		}
-
-		/* check if custom image is chosen and load pntrst_custom_hover_img_script */
-		if ( ! empty( $pntrst_options['pinit_image'] ) ) {
-			/* if image hover is enabled, append the data-pin-hover attribute */
-			if ( ! empty( $pntrst_options['pinit_hover'] ) ) {
-				$return_string .= ' data-pin-hover="true"';
-			}
-			/* button shape */
-			if ( empty( $pntrst_options['pinit_image_shape'] ) ) {
-				$return_string .= ' data-pin-round="true" data-pin-save="false"';
-			}
-			/* button size */
-			if ( empty( $pntrst_options['pinit_image_size'] ) ) {
-				$return_string .= ' data-pin-tall="true"';
-			}
-			/* if image shape square */
-			if ( ! empty( $pntrst_options['pinit_image_shape'] ) ) {
-				$return_string .= ' data-pin-save="true" data-pin-lang="' . $pntrst_locale . '"';
-
-				if ( isset( $pntrst_options['pinit_counts'] ) ) {
-					$return_string .= ' data-pin-count="' . $pntrst_options['pinit_counts'] . '"';
-				}
-			}
-		} ?>
-		<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" <?php echo $return_string; ?>></script>
-	<?php }
+	}
 }
 
-if ( ! function_exists( 'pntrst_custom_hover_img_script' ) ) {
-	function pntrst_custom_hover_img_script() {
+/* Enqueue plugin scripts and styles */
+if ( ! function_exists( 'pntrst_script_enqueue' ) ) {
+	function pntrst_script_enqueue() {
 		global $pntrst_options;
-		if ( empty( $pntrst_options['pinit_image'] ) && ! empty( $pntrst_options['pinit_hover'] ) ) { ?>
-			<script id='bws-custom-hover-js' src="<?php echo plugins_url( 'js/custom_hover.js', __FILE__ ) ?>" data-custom-button-image="<?php echo $pntrst_options['pinit_custom_image_link'] ?>" async type='text/javascript'></script>
-		<?php } elseif ( ! empty( $pntrst_options['pinit_hover'] ) ) { ?>
-			<script type="text/javascript">
-				(function( $ ){
-					$( document ).ready( function() {
-						$( '#fancybox-outer' ).hover( function(){
-							$( 'body' ).find( '#fancybox-img' ).attr( 'data-pin-no-hover', '1' );
-						});
-					});
-				})( jQuery );
-			</script>
-		<?php }
+
+		wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
+		wp_enqueue_script( 'pinit.js', '//assets.pinterest.com/js/pinit.js', array(), null );
+
+		if ( empty( $pntrst_options['pinit_image'] ) && ! empty( $pntrst_options['pinit_hover'] ) ) {
+			wp_enqueue_script( 'bws-custom-hover-js', plugins_url( 'js/custom_hover.js', __FILE__ ), array(), false, true );
+		} elseif ( ! empty( $pntrst_options['pinit_hover'] ) ) {
+			wp_enqueue_script( 'pntrst_pinit_hover', plugins_url( 'js/pinit_hover.js', __FILE__ ), array(), false, true );
+		}
+	}
+}
+
+/**
+* Adds async/defer and data attributes to enqueued / registered scripts.
+*
+* @param string $tag    The script tag.
+* @param string $handle The script handle.
+* @return string Script HTML string.
+*/
+if ( ! function_exists( 'pntrst_add_data_to_script' ) ) {
+	function pntrst_add_data_to_script( $tag, $handle ) {
+		global $pntrst_options, $pntrst_lang_codes, $mltlngg_current_language;
+
+		if ( 'pinit.js' === $handle ) {
+			$return_string = "async";
+
+			/* check if custom image is chosen and load pntrst_custom_hover_img_script */
+			if ( ! empty( $pntrst_options['pinit_image'] ) ) {				
+
+				/* if image hover is enabled, append the data-pin-hover attribute */
+				if ( ! empty( $pntrst_options['pinit_hover'] ) ) {
+					$return_string .= ' data-pin-hover="true"';
+				}
+				/* button shape */
+				if ( empty( $pntrst_options['pinit_image_shape'] ) ) {
+					$return_string .= ' data-pin-round="true" data-pin-save="false"';
+				}
+				/* button size */
+				if ( empty( $pntrst_options['pinit_image_size'] ) ) {
+					$return_string .= ' data-pin-tall="true"';
+				}
+				/* if image shape square */
+				if ( ! empty( $pntrst_options['pinit_image_shape'] ) ) {
+
+					/* Add multilanguage options */
+					if ( ! empty( $pntrst_options['use_multilanguage_locale'] ) && isset( $mltlngg_current_language ) ) {
+						if ( array_key_exists( $mltlngg_current_language, $pntrst_lang_codes ) ) {
+							$pntrst_locale = $mltlngg_current_language;
+						} else {
+							$pntrst_locale_from_multilanguage = str_replace( '_', '-', $mltlngg_current_language );
+							if ( array_key_exists( $pntrst_locale_from_multilanguage, $pntrst_lang_codes ) ) {
+								$pntrst_locale = $pntrst_locale_from_multilanguage;
+							} else {
+								$pntrst_locale_from_multilanguage = explode( '_', $mltlngg_current_language );
+								if ( is_array( $pntrst_locale_from_multilanguage ) && array_key_exists( $pntrst_locale_from_multilanguage[0], $pntrst_lang_codes ) ) {
+									$pntrst_locale = $pntrst_locale_from_multilanguage[0];
+								}
+							}
+						}
+					}
+
+					if ( empty( $pntrst_locale ) ) {
+						$pntrst_locale = $pntrst_options['lang'];
+					}
+
+					$return_string .= ' data-pin-save="true" data-pin-lang="' . $pntrst_locale . '"';
+
+					if ( isset( $pntrst_options['pinit_counts'] ) ) {
+						$return_string .= ' data-pin-count="' . $pntrst_options['pinit_counts'] . '"';
+					}
+				}				
+			}
+			$tag = preg_replace( ':(?=></script>):', " $return_string", $tag, 1 );
+		} else if ( 'bws-custom-hover-js' === $handle ) {
+			$return_string = 'id="bws-custom-hover-js" data-custom-button-image="' . $pntrst_options['pinit_custom_image_link'] . '" async';
+			$tag = preg_replace( ':(?=></script>):', " $return_string", $tag, 1 );
+		}
+		return $tag;
 	}
 }
 
@@ -409,7 +426,7 @@ if ( ! class_exists( 'Pinterest_Widget' ) ) {
 				/*id*/
 				'pntrst-widget',
 				/*name*/
-				__( 'Pinterest Widget', 'bws-pinterest' ),
+				__( 'Image Pinning Widget', 'bws-pinterest' ),
 				/* Widget description */
 				array(
 					'description' => __( 'Widget for adding Pinterest Pin, Board, and Profile widgets', 'bws-pinterest' ), /* description displayed in admin */
@@ -675,133 +692,134 @@ if ( ! function_exists( 'pntrst_shortcode_content' ) ) {
 					<label><?php _e( 'Thumbnails width', 'bws-pinterest' ); ?>: <input style="height: auto;" name="pntrst_widget_thumbnail" type="number" min="60" max="2000" value="" class="small-text" /> (px)</label>
 				</div>
 			</fieldset>
-			<input class="bws_default_shortcode" type="hidden" name="default" value="[bws_pinterest_follow label=&quot;<?php echo $pntrst_options['follow_button_label']; ?>&quot;]" />
-			<script type="text/javascript">
-				function pntrst_shortcode_init() {
-					(function( $ ) {
-						$( '.mce-reset #pntrst input, .mce-reset #pntrst select' ).change( function() {
-
-							var shortcodeType = $( '.mce-reset select[name="pntrst_shortcode_type"] option:selected' ).val();
-
-							if ( 'follow' == shortcodeType ) {
-								$( '.mce-reset .pntrst-follow-shortcode' ).show();
-								$( '.mce-reset .pntrst-pin-it-shortcode, .mce-reset .pntrst-widget-shortcode' ).hide();
-								/* Display follow button shortcode */
-								var shortcode = '[bws_pinterest_follow label="' + $( '.mce-reset input[name="pntrst_follow_label"]' ).val() + '"]';
-							} else if ( 'pin_it' == shortcodeType ) {
-								$( '.mce-reset .pntrst-pin-it-shortcode' ).show();
-								$( '.mce-reset .pntrst-follow-shortcode, .mce-reset .pntrst-widget-shortcode' ).hide();
-								/* Display pin it button shortcode */
-								var buttonType = $( '.mce-reset input[name="pntrst_pit_it_type"]:checked' ).val();
-
-								if ( $( '.mce-reset input[name="pntrst_custom_button"]' ).is( ':checked' ) ) {
-									$( '.mce-reset input[name="pntrst_custom_button_image"]' ).show();
-									var customButtonImage = $( '.mce-reset input[name="pntrst_custom_button_image"]' ).val();
-									if ( false === /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( customButtonImage ) ) {
-										customButtonImage = '';
-									}
-								} else {
-									$( '.mce-reset input[name="pntrst_custom_button_image"]' ).hide();
-								}
-
-								if ( 'any' == buttonType ) {
-									$( '.mce-reset input[name="pntrst_pin_image_url"]' ).hide();
-									if ( $( '.mce-reset input[name="pntrst_custom_button"]' ).is( ':checked' ) ) {
-										if ( customButtonImage.length > 0 ) {
-											var shortcode = '[bws_pinterest_pin_it type="' + buttonType + '" custom="true" url="' + customButtonImage + '"]';
-										} else {
-											var shortcode = '[bws_pinterest_pin_it type="' + buttonType + '" custom="true"]';
-										}
-									} else {
-										var shortcode = '[bws_pinterest_pin_it type="' + buttonType + '"]';
-									}
-								} else if ( 'one' == buttonType ) {
-									$( '.mce-reset input[name="pntrst_pin_image_url"]' ).show();
-									var pinImageUrl = $( '.mce-reset input[name="pntrst_pin_image_url"]' ).val();
-									if ( false === /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( pinImageUrl ) ) {
-										pinImageUrl = '';
-									}
-									if ( $( '.mce-reset input[name="pntrst_custom_button"]' ).is( ':checked' ) ) {
-										if ( customButtonImage.length > 0 ) {
-											var shortcode = '[bws_pinterest_pin_it type="' + buttonType + '" image_url="' + pinImageUrl + '" custom="true" url="' + customButtonImage + '"]';
-										} else {
-											var shortcode = '[bws_pinterest_pin_it type="' + buttonType + '" image_url="' + pinImageUrl + '" custom="true"]';
-										}
-									} else {
-										var shortcode = '[bws_pinterest_pin_it type="' + buttonType + '" image_url="' + pinImageUrl + '"]';
-									}
-								}
-							} else if ( 'pin_widget' == shortcodeType || 'board_widget' == shortcodeType || 'profile_widget' == shortcodeType ) {
-								$( '.mce-reset .pntrst-widget-shortcode' ).show();
-								$( '.mce-reset .pntrst-follow-shortcode, .mce-reset .pntrst-pin-it-shortcode' ).hide();
-
-								var widgetWidth = $( '.mce-reset input[name="pntrst_widget_width"]' ).val();
-								var widgetHeight = $( '.mce-reset input[name="pntrst_widget_height"]' ).val();
-								var widgetThumbnail = $( '.mce-reset input[name="pntrst_widget_thumbnail"]' ).val();
-
-								if ( false == widgetWidth || parseInt( widgetWidth ) < 130 ) {
-									widgetWidth = 130;
-								} else if ( parseInt( widgetWidth ) > 2000 ) {
-									widgetWidth = 2000;
-								} else {
-									widgetWidth = parseInt( widgetWidth );
-								}
-								if ( false == widgetHeight || parseInt( widgetHeight ) < 60 ) {
-									widgetHeight = 60;
-								} else if ( parseInt( widgetHeight ) > 1500 ) {
-									widgetHeight = 1500;
-								} else {
-									widgetHeight = parseInt( widgetHeight );
-								}
-								if ( false == widgetThumbnail || parseInt( widgetThumbnail ) < 60 ) {
-									widgetThumbnail = 60;
-								} else if ( parseInt( widgetThumbnail ) > 2000 ) {
-									widgetThumbnail = 2000;
-								} else {
-									widgetThumbnail = parseInt( widgetThumbnail );
-								}
-
-								var widgetUrl = $( '.mce-reset input[name="pntrst_widget_url"]' ).val();
-
-								if ( false === /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( widgetUrl ) ) {
-									widgetUrl = '';
-								}
-
-								if ( 'pin_widget' == shortcodeType ) {
-									$( '.mce-reset #pntrst_pin_widget_size, .mce-reset #pntrst-widget-url' ).show();
-									$( '.mce-reset #pntrst_widget_size' ).hide();
-
-									var pinWidgetSize = $( '.mce-reset select[name="pntrst_pin_widget_size"] option:selected' ).val();
-									var shortcode = '[bws_pinterest_widget type="pin" size="' + pinWidgetSize + '" url="' + widgetUrl + '"]';
-								} else if ( 'board_widget' == shortcodeType ) {
-									$( '.mce-reset #pntrst_pin_widget_size' ).hide();
-									$( '.mce-reset #pntrst_widget_size, .mce-reset #pntrst-widget-url' ).show();
-
-									if ( '' != widgetWidth || 60 != widgetHeight || 60 != widgetThumbnail ) {
-										var shortcode = '[bws_pinterest_widget type="board" width="' + widgetWidth + '" height="' + widgetHeight + '" thumbnail="' + widgetThumbnail + '" url="' + widgetUrl + '"]';
-									} else {
-										var shortcode = '[bws_pinterest_widget type="board" url="' + widgetUrl + '"]';
-									}
-								} else {
-									$( '.mce-reset #pntrst_pin_widget_size, .mce-reset #pntrst-widget-url' ).hide();
-									$( '.mce-reset #pntrst_widget_size' ).show();
-
-									if ( '' != widgetWidth || 60 != widgetHeight || 60 != widgetThumbnail ) {
-										var shortcode = '[bws_pinterest_widget type="profile" width="' + widgetWidth + '" height="' + widgetHeight + '" thumbnail="' + widgetThumbnail + '"]';
-									} else {
-										var shortcode = '[bws_pinterest_widget type="profile"]';
-									}
-								}
-							}
-							/* Shortcode output */
-							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
-						});
-					})( jQuery );
-				}
-			</script>
+			<input class="bws_default_shortcode" type="hidden" name="default" value="[bws_pinterest_follow label=&quot;<?php echo $pntrst_options['follow_button_label']; ?>&quot;]" />			
 			<div class="clear"></div>
 		</div>
-	<?php }
+		<?php $script = "function pntrst_shortcode_init() {
+				(function( $ ) {
+					$( '.mce-reset #pntrst input, .mce-reset #pntrst select' ).change( function() {
+
+						var shortcodeType = $( '.mce-reset select[name=\"pntrst_shortcode_type\"] option:selected' ).val();
+
+						if ( 'follow' == shortcodeType ) {
+							$( '.mce-reset .pntrst-follow-shortcode' ).show();
+							$( '.mce-reset .pntrst-pin-it-shortcode, .mce-reset .pntrst-widget-shortcode' ).hide();
+							/* Display follow button shortcode */
+							var shortcode = '[bws_pinterest_follow label=\"' + $( '.mce-reset input[name=\"pntrst_follow_label\"]' ).val() + '\"]';
+						} else if ( 'pin_it' == shortcodeType ) {
+							$( '.mce-reset .pntrst-pin-it-shortcode' ).show();
+							$( '.mce-reset .pntrst-follow-shortcode, .mce-reset .pntrst-widget-shortcode' ).hide();
+							/* Display pin it button shortcode */
+							var buttonType = $( '.mce-reset input[name=\"pntrst_pit_it_type\"]:checked' ).val();
+
+							if ( $( '.mce-reset input[name=\"pntrst_custom_button\"]' ).is( ':checked' ) ) {
+								$( '.mce-reset input[name=\"pntrst_custom_button_image\"]' ).show();
+								var customButtonImage = $( '.mce-reset input[name=\"pntrst_custom_button_image\"]' ).val();
+								if ( false === /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( customButtonImage ) ) {
+									customButtonImage = '';
+								}
+							} else {
+								$( '.mce-reset input[name=\"pntrst_custom_button_image\"]' ).hide();
+							}
+
+							if ( 'any' == buttonType ) {
+								$( '.mce-reset input[name=\"pntrst_pin_image_url\"]' ).hide();
+								if ( $( '.mce-reset input[name=\"pntrst_custom_button\"]' ).is( ':checked' ) ) {
+									if ( customButtonImage.length > 0 ) {
+										var shortcode = '[bws_pinterest_pin_it type=\"' + buttonType + '\" custom=\"true\" url=\"' + customButtonImage + '\"]';
+									} else {
+										var shortcode = '[bws_pinterest_pin_it type=\"' + buttonType + '\" custom=\"true\"]';
+									}
+								} else {
+									var shortcode = '[bws_pinterest_pin_it type=\"' + buttonType + '\"]';
+								}
+							} else if ( 'one' == buttonType ) {
+								$( '.mce-reset input[name=\"pntrst_pin_image_url\"]' ).show();
+								var pinImageUrl = $( '.mce-reset input[name=\"pntrst_pin_image_url\"]' ).val();
+								if ( false === /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( pinImageUrl ) ) {
+									pinImageUrl = '';
+								}
+								if ( $( '.mce-reset input[name=\"pntrst_custom_button\"]' ).is( ':checked' ) ) {
+									if ( customButtonImage.length > 0 ) {
+										var shortcode = '[bws_pinterest_pin_it type=\"' + buttonType + '\" image_url=\"' + pinImageUrl + '\" custom=\"true\" url=\"' + customButtonImage + '\"]';
+									} else {
+										var shortcode = '[bws_pinterest_pin_it type=\"' + buttonType + '\" image_url=\"' + pinImageUrl + '\" custom=\"true\"]';
+									}
+								} else {
+									var shortcode = '[bws_pinterest_pin_it type=\"' + buttonType + '\" image_url=\"' + pinImageUrl + '\"]';
+								}
+							}
+						} else if ( 'pin_widget' == shortcodeType || 'board_widget' == shortcodeType || 'profile_widget' == shortcodeType ) {
+							$( '.mce-reset .pntrst-widget-shortcode' ).show();
+							$( '.mce-reset .pntrst-follow-shortcode, .mce-reset .pntrst-pin-it-shortcode' ).hide();
+
+							var widgetWidth = $( '.mce-reset input[name=\"pntrst_widget_width\"]' ).val();
+							var widgetHeight = $( '.mce-reset input[name=\"pntrst_widget_height\"]' ).val();
+							var widgetThumbnail = $( '.mce-reset input[name=\"pntrst_widget_thumbnail\"]' ).val();
+
+							if ( false == widgetWidth || parseInt( widgetWidth ) < 130 ) {
+								widgetWidth = 130;
+							} else if ( parseInt( widgetWidth ) > 2000 ) {
+								widgetWidth = 2000;
+							} else {
+								widgetWidth = parseInt( widgetWidth );
+							}
+							if ( false == widgetHeight || parseInt( widgetHeight ) < 60 ) {
+								widgetHeight = 60;
+							} else if ( parseInt( widgetHeight ) > 1500 ) {
+								widgetHeight = 1500;
+							} else {
+								widgetHeight = parseInt( widgetHeight );
+							}
+							if ( false == widgetThumbnail || parseInt( widgetThumbnail ) < 60 ) {
+								widgetThumbnail = 60;
+							} else if ( parseInt( widgetThumbnail ) > 2000 ) {
+								widgetThumbnail = 2000;
+							} else {
+								widgetThumbnail = parseInt( widgetThumbnail );
+							}
+
+							var widgetUrl = $( '.mce-reset input[name=\"pntrst_widget_url\"]' ).val();
+
+							if ( false === /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( widgetUrl ) ) {
+								widgetUrl = '';
+							}
+
+							if ( 'pin_widget' == shortcodeType ) {
+								$( '.mce-reset #pntrst_pin_widget_size, .mce-reset #pntrst-widget-url' ).show();
+								$( '.mce-reset #pntrst_widget_size' ).hide();
+
+								var pinWidgetSize = $( '.mce-reset select[name=\"pntrst_pin_widget_size\"] option:selected' ).val();
+								var shortcode = '[bws_pinterest_widget type=\"pin\" size=\"' + pinWidgetSize + '\" url=\"' + widgetUrl + '\"]';
+							} else if ( 'board_widget' == shortcodeType ) {
+								$( '.mce-reset #pntrst_pin_widget_size' ).hide();
+								$( '.mce-reset #pntrst_widget_size, .mce-reset #pntrst-widget-url' ).show();
+
+								if ( '' != widgetWidth || 60 != widgetHeight || 60 != widgetThumbnail ) {
+									var shortcode = '[bws_pinterest_widget type=\"board\" width=\"' + widgetWidth + '\" height=\"' + widgetHeight + '\" thumbnail=\"' + widgetThumbnail + '\" url=\"' + widgetUrl + '\"]';
+								} else {
+									var shortcode = '[bws_pinterest_widget type=\"board\" url=\"' + widgetUrl + '\"]';
+								}
+							} else {
+								$( '.mce-reset #pntrst_pin_widget_size, .mce-reset #pntrst-widget-url' ).hide();
+								$( '.mce-reset #pntrst_widget_size' ).show();
+
+								if ( '' != widgetWidth || 60 != widgetHeight || 60 != widgetThumbnail ) {
+									var shortcode = '[bws_pinterest_widget type=\"profile\" width=\"' + widgetWidth + '\" height=\"' + widgetHeight + '\" thumbnail=\"' + widgetThumbnail + '\"]';
+								} else {
+									var shortcode = '[bws_pinterest_widget type=\"profile\"]';
+								}
+							}
+						}
+						/* Shortcode output */
+						$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
+					});
+				})( jQuery );
+			}";
+		wp_register_script( 'pntrst_bws_shortcode_button', '' );
+		wp_enqueue_script( 'pntrst_bws_shortcode_button' );
+		wp_add_inline_script( 'pntrst_bws_shortcode_button', sprintf( $script ) );
+	}
 }
 
 /* Functions creates other links on plugins page. */
@@ -836,21 +854,11 @@ if ( ! function_exists( 'pntrst_action_links' ) ) {
 	}
 }
 
-if ( ! function_exists ( 'pntrst_admin_notices' ) ) {
+if ( ! function_exists( 'pntrst_admin_notices' ) ) {
 	function pntrst_admin_notices() {
-		global $hook_suffix, $pntrst_plugin_info, $pntrst_options;
+		global $hook_suffix, $pntrst_plugin_info;
 
 		if ( 'plugins.php' == $hook_suffix && ! is_network_admin() ) {
-
-			/*pls show banner go pro */
-			if ( empty( $pntrst_options ) ) {
-				pntrst_register_settings();
-			}
-
-			if ( isset( $pntrst_options['first_install'] ) && strtotime( '-1 week' ) > $pntrst_options['first_install'] ) {
-				bws_plugin_banner( $pntrst_plugin_info, 'pntrst', 'pinterest', '964a97a5409b7ba8f0744b6f28a0372c', '547', 'bws-pinterest' );
-			}
-			/* show banner go settings pls*/
 			bws_plugin_banner_to_settings( $pntrst_plugin_info, 'pntrst_options', 'bws-pinterest', 'admin.php?page=pinterest.php' );
 		}
 
@@ -933,10 +941,7 @@ add_action( 'widgets_init', 'pntrst_widget_register' );
 add_action( 'admin_enqueue_scripts', 'pntrst_enqueue' );
 /* Enqueue plugin scripts and styles */
 add_action( 'wp_enqueue_scripts', 'pntrst_script_enqueue' );
-/* Add pinit.js script with option params */
-add_action( 'wp_head', 'pntrst_pinit_js_config' );
-/* Load script for custom image on hover */
-add_action( 'wp_footer', 'pntrst_custom_hover_img_script' );
+add_filter( 'script_loader_tag', 'pntrst_add_data_to_script', 10, 2 );
 /* show buttons on frontend */
 add_filter( 'the_content', 'pntrst_frontend' );
 add_filter( 'pgntn_callback', 'pntrst_pagination_callback' );

@@ -1,7 +1,7 @@
 <a href="https://bestwebsoft.com/products/wordpress/plugins/pinterest/" target=_blank>Pinterest WordPress Plugin</a>
 ========================
 
-<p>Pinterest plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your WordPress website. Plugin has simple settings and includes shortcodes.</p>
+<p>Image Pinning plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your WordPress website. Plugin has simple settings and includes shortcodes.</p>
 <p>Customize the appearance, configure settings, and get more social traffic to your website!</p>
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
@@ -106,5 +106,5 @@
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/google-plus-one/?k=d4f7f1fae309de330b48b9fcf64c6e66" rel="nofollow">Google +1</a> &#8211; Add Google +1 Share, Follow, Hangout buttons and profile badge to WordPress posts, pages and widgets.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/linkedin/?k=c54bef8c06dceac21abdf5a77bb3cf9c" rel="nofollow">LinkedIn</a> &#8211; Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. 5 plugins included – profile, insider, etc.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/twitter/?k=712e57dc3bbc311b2f5199e76c18f587" rel="nofollow">Twitter</a> &#8211; Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts, pages and widgets.</li>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61" rel="nofollow">Facebook Button</a> &#8211; Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61" rel="nofollow">Like &amp; Share</a> &#8211; Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.</li>
 </ul>
