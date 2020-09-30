@@ -40,8 +40,6 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				/*pls */
 				'wp_slug'			 => 'bws-pinterest',
 				'doc_link'			 => 'https://docs.google.com/document/d/1cOVH69e6hW5qwrfkqYbMR6iUOwfK-5P2ptTBwHOR_xI',
-				'pro_page' 			 => 'admin.php?page=pinterest-pro.php',
-				'bws_license_plugin' => 'bws-pinterest-pro/bws-pinterest-pro.php',
 				'link_key' 			 => 'f8f97fcf6a752a73595ec494940c4bb8',
 				'link_pn' 			 => '547'
 				/* pls*/
@@ -182,7 +180,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			}
 			$all_plugins = get_plugins(); ?>
-			<h3 class="bws_tab_label"><?php _e( 'Image Pinning Settings', 'bws-pinterest' ); ?></h3>
+			<h3 class="bws_tab_label"><?php _e( 'Pinterest Settings', 'bws-pinterest' ); ?></h3>
 			<?php $this->help_phrase(); ?>
 			<hr />
 			<div class="bws_tab_sub_label"><?php _e( 'General', 'bws-pinterest' ); ?></div>
@@ -222,7 +220,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 								echo '>' . esc_html( $value ) . '</option>';
 							} ?>
 						</select>
-						<div class="bws_info"><?php _e( 'Select the default language for Image Pinning button(-s).', 'bws-pinterest' ); ?></div>
+						<div class="bws_info"><?php _e( 'Select the default language for Pinterest button(-s).', 'bws-pinterest' ); ?></div>
 					</td>
 				</tr>
 				<tr>
@@ -352,11 +350,11 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		public function display_metabox() { ?>
 			<div class="postbox">
 				<h3 class="hndle">
-					<?php _e( 'Image Pinning Buttons Shortcode', 'bws-pinterest' ); ?>
+					<?php _e( 'Pinterest Buttons Shortcode', 'bws-pinterest' ); ?>
 				</h3>
 				<div class="inside">
-					<p><?php _e( 'Add Image Pinning to a widget.', 'bws-pinterest' ); ?> <a href="widgets.php"><?php _e( 'Navigate to Widgets', 'bws-pinterest' ); ?></a></p>
-					<?php _e( "Add Image Pinning button(-s) to your posts, pages or custom post types using the following shortcode:", 'bws-pinterest' ); ?>
+					<p><?php _e( 'Add Pinterest to a widget.', 'bws-pinterest' ); ?> <a href="widgets.php"><?php _e( 'Navigate to Widgets', 'bws-pinterest' ); ?></a></p>
+					<?php _e( "Add Pinterest button(-s) to your posts, pages or custom post types using the following shortcode:", 'bws-pinterest' ); ?>
 					<div class="bws_margined_box">
 						<?php _e( 'Save', 'bws-pinterest' );
 						bws_shortcode_output( '[bws_pinterest_pin_it]' ); ?>
@@ -383,7 +381,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 						<table class="form-table bws_pro_version">
 							<tr>
 								<td colspan="2">
-									<?php _e( 'Please choose the necessary post types (or single pages) where Image Pinning buttons will be displayed:', 'bws-pinterest' ); ?>
+									<?php _e( 'Please choose the necessary post types (or single pages) where Pinterest buttons will be displayed:', 'bws-pinterest' ); ?>
 								</td>
 							</tr>
 							<tr>

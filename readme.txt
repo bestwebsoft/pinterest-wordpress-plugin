@@ -1,10 +1,10 @@
-=== Image Pinning by BestWebSoft ===
+=== BestWebSoft’s Pinterest ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
-Requires at least: 4.1
-Tested up to: 5.3.1
-Stable tag: 1.1.2
+Requires at least: 4.5
+Tested up to: 5.5.1
+Stable tag: 1.1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Add Pinterest Follow, Save buttons and profile widgets (Pin, Board, Profile) to 
 
 == Description ==
 
-Image Pinning plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
+BestWebSoft’s Pinterest plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
 
 Customize the appearance, configure settings, and get more social traffic to your website!
 
@@ -94,10 +94,9 @@ Some of these translations are not complete. We are constantly adding new featur
 
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=23213b6fa43b7c059fc94af0ae2868ce) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 * [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=ba5e29d947ec030cacff8c3931835aa1) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
-* [Google +1](https://bestwebsoft.com/products/wordpress/plugins/google-plus-one/?k=d4f7f1fae309de330b48b9fcf64c6e66) - Add Google +1 Share, Follow, Hangout buttons and profile badge to WordPress posts, pages and widgets.
-* [LinkedIn](https://bestwebsoft.com/products/wordpress/plugins/linkedin/?k=c54bef8c06dceac21abdf5a77bb3cf9c) - Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. 5 plugins included – profile, insider, etc.
-* [Twitter](https://bestwebsoft.com/products/wordpress/plugins/twitter/?k=712e57dc3bbc311b2f5199e76c18f587) - Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts, pages and widgets.
-* [Like & Share](https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61) - Add Facebook Like, Share and Profile buttons to WordPress posts, pages and widgets.
+* [BestWebSoft's LinkedIn](https://bestwebsoft.com/products/wordpress/plugins/linkedin/?k=c54bef8c06dceac21abdf5a77bb3cf9c) - Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. 5 plugins included - profile, insider, etc.
+* [BestWebSoft's Twitter](https://bestwebsoft.com/products/wordpress/plugins/twitter/?k=712e57dc3bbc311b2f5199e76c18f587) - Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts, pages, and widgets.
+* [BestWebSoft's Like & Share](https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=f6b7c9470f482c4991369b3eafa6ac61) - Add Facebook Like, Share and Profile buttons to WordPress posts, pages, and widgets.
 
 == Installation ==
 
@@ -135,6 +134,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 7. Adding Pinterest shortcode to your post or page.
 
 == Changelog ==
+
+= V1.1.3 - 29.09.2020 =
+* Bugfix : The problem with "Save" button displaying on image hover has been fixed.
+* Bugfix : The problem with "Pin" button displaying has been fixed.
+* Bugfix : The bug with resizing buttons has been fixed.
+* Bugfix : The bug with displaying the "Save" button when hovering over an image when selecting post or page has been fixed.
+* Update : Plugin was renamed.
+* Update : BWS Panel section was updated.
 
 = V1.1.2 - 13.12.2019 =
 * Update : Plugin was renamed.
@@ -190,6 +197,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.1.3 =
+* Bugs fixed.
 
 = V1.1.2 =
 * The compatibility with new WordPress version updated.
