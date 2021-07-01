@@ -1,17 +1,17 @@
 <?php
-/*
+/*##
 Plugin Name: BestWebSoft's Pinterest
 Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/pinterest/
 Description: Add Pinterest Follow, Save buttons and profile widgets (Pin, Board, Profile) to WordPress posts, pages and widgets.
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.1.3
+Version: 1.1.4
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2021  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 3, as
@@ -46,7 +46,7 @@ if ( ! function_exists( 'pntrst_admin_menu' ) ) {
 		add_action( 'load-' . $settings, 'pntrst_add_tabs' );
 	}
 }
-/* end pntrst_admin_menu */
+/* end pntrst_admin_menu ##*/
 
 /**
  * Internationalization
@@ -69,11 +69,11 @@ if ( ! function_exists ( 'pntrst_init' ) ) {
 			$pntrst_plugin_info = get_plugin_data( __FILE__ );
 		}
 
-		/* add general functions */
+		/*## add general functions */
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
 
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $pntrst_plugin_info, '4.5' );/* check compatible with current WP version */
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $pntrst_plugin_info, '4.5' );/* check compatible with current WP version ##*/
 
 		/* Call register settings function pntrst_register_settings() */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && ( "pinterest.php" == $_GET['page'] || "social-buttons.php" == $_GET['page'] ) ) ) {
@@ -91,15 +91,12 @@ if ( ! function_exists( 'pntrst_admin_init' ) ) {
 		/* Add variable for bws_menu */
 		global $pagenow, $bws_plugin_info, $pntrst_plugin_info, $bws_shortcode_list, $pntrst_options;
 
-		/* Function for bws menu */
+		/*## Function for bws menu */
 		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '547', 'version' => $pntrst_plugin_info["Version"] );
 		}
 
-		/* add Pinterest to global $bws_shortcode_list */
-		$bws_shortcode_list['pntrst'] = array( 'name' => 'Pinterest', 'js_function' => 'pntrst_shortcode_init' );
-
-		/*pls show banner go pro */
+        /*pls */
 		if ( 'plugins.php' == $pagenow ) {
 			if ( empty( $pntrst_options ) ) {
 				pntrst_register_settings();
@@ -107,7 +104,10 @@ if ( ! function_exists( 'pntrst_admin_init' ) ) {
 			if ( function_exists( 'bws_plugin_banner_go_pro' ) )
 				bws_plugin_banner_go_pro( $pntrst_options, $pntrst_plugin_info, 'pntrst', 'pinterest', '964a97a5409b7ba8f0744b6f28a0372c', '547', 'bws-pinterest' );
 		}
-		/* end show banner go settings pls*/
+        /* ##*/ /* pls*/
+
+		/* add Pinterest to global $bws_shortcode_list */
+		$bws_shortcode_list['pntrst'] = array( 'name' => 'Pinterest', 'js_function' => 'pntrst_shortcode_init' );
 	}
 }
 
@@ -118,7 +118,9 @@ if ( ! function_exists( 'pntrst_register_settings' ) ) {
 
 		/* Install the option defaults */
 		if ( ! get_option( 'pntrst_options' ) ) {
+			/*## */
 			pntrst_plugin_activate();
+			/* ##*/
 			$options_defaults = pntrst_get_options_default();
 			add_option( 'pntrst_options', $options_defaults );
 		}
@@ -150,6 +152,7 @@ if ( ! function_exists( 'pntrst_register_settings' ) ) {
 	}
 }
 
+/*## Function for activation */
 if ( ! function_exists( 'pntrst_plugin_activate' ) ) {
 	function pntrst_plugin_activate() {
 		/* registering uninstall hook */
@@ -162,6 +165,7 @@ if ( ! function_exists( 'pntrst_plugin_activate' ) ) {
 		}
 	}
 }
+/* ##*/
 
 if ( ! function_exists( 'pntrst_get_options_default' ) ) {
 	function pntrst_get_options_default() {
@@ -193,13 +197,15 @@ if ( ! function_exists( 'pntrst_get_options_default' ) ) {
 	}
 }
 
-/* Plugin's settings page in the admin */
+/*## Plugin's settings page in the admin */
 if ( ! function_exists( 'pntrst_settings_page' ) ) {
 	function pntrst_settings_page() {		
 		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
 			require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/includes/class-pntrst-settings.php' );
-		$page = new Pntrst_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+		$page = new Pntrst_Settings_Tabs( plugin_basename( __FILE__ ) );
+        if ( method_exists( $page, 'add_request_feature' ) )
+                        $page->add_request_feature(); ?>
 		<div id="pntrst_settings_form" class="wrap">
 			<h1><?php _e( 'Pinterest Settings', 'bws-pinterest' ); ?></h1>
 			<noscript>
@@ -214,7 +220,7 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 	<?php }
 }
 
-/* Enqueue plugin scripts and styles for admin */
+/* Enqueue plugin scripts and styles for admin ##*/
 if ( ! function_exists ( 'pntrst_enqueue' ) ) {
 	function pntrst_enqueue( $hook ) {
 		wp_enqueue_style( 'pntrst_icon', plugins_url( 'css/icon.css', __FILE__ ) );
@@ -828,21 +834,7 @@ if ( ! function_exists( 'pntrst_shortcode_content' ) ) {
 	}
 }
 
-/* Functions creates other links on plugins page. */
-if ( ! function_exists( 'pntrst_links' ) ) {
-	function pntrst_links( $links, $file ) {
-		$base = plugin_basename( __FILE__ );
-		if ( $file == $base ) {
-			if ( ! is_network_admin() ) {
-				$links[] = '<a href="admin.php?page=pinterest.php">' . __( 'Settings', 'bws-pinterest' ) . '</a>';
-			}
-			$links[] = '<a href="https://support.bestwebsoft.com/hc/en-us/sections/201918113" target="_blank">' . __( 'FAQ', 'bws-pinterest' ) . '</a>';
-			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-pinterest' ) . '</a>';
-		}
-		return $links;
-	}
-}
-
+/*## Functions creates other links on plugins page. */
 if ( ! function_exists( 'pntrst_action_links' ) ) {
 	function pntrst_action_links( $links, $file ) {
 		if ( ! is_network_admin() ) {
@@ -855,6 +847,21 @@ if ( ! function_exists( 'pntrst_action_links' ) ) {
 				$settings_link = '<a href="admin.php?page=pinterest.php">' . __( 'Settings', 'bws-pinterest' ) . '</a>';
 				array_unshift( $links, $settings_link );
 			}
+		}
+		return $links;
+	}
+}
+
+/* Functions creates other links on plugins page. */
+if ( ! function_exists( 'pntrst_links' ) ) {
+	function pntrst_links( $links, $file ) {
+		$base = plugin_basename( __FILE__ );
+		if ( $file == $base ) {
+			if ( ! is_network_admin() ) {
+				$links[] = '<a href="admin.php?page=pinterest.php">' . __( 'Settings', 'bws-pinterest' ) . '</a>';
+			}
+			$links[] = '<a href="https://support.bestwebsoft.com/hc/en-us/sections/201918113" target="_blank">' . __( 'FAQ', 'bws-pinterest' ) . '</a>';
+			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'bws-pinterest' ) . '</a>';
 		}
 		return $links;
 	}
@@ -936,7 +943,7 @@ if ( ! function_exists( 'pntrst_plugin_uninstall' ) ) {
 /* Activate plugin */
 register_activation_hook( __FILE__, 'pntrst_plugin_activate' );
 add_action( 'admin_menu', 'pntrst_admin_menu' );
-/* Initialization */
+/* Initialization ##*/
 add_action( 'plugins_loaded', 'pntrst_loaded' );
 /* plugin init */
 add_action( 'init', 'pntrst_init' );
@@ -960,8 +967,9 @@ add_shortcode( 'bws_pinterest_follow', 'pntrst_pin_follow_shortcode' );
 add_shortcode( 'bws_pinterest_widget', 'pntrst_widget_shortcode' );
 /* custom filter for bws button in tinyMCE */
 add_filter( 'bws_shortcode_button_content', 'pntrst_shortcode_content' );
-/* Additional links on the plugin page */
+/*## Additional links on the plugin page */
 add_filter( 'plugin_action_links', 'pntrst_action_links', 10, 2 );
 add_filter( 'plugin_row_meta', 'pntrst_links', 10, 2 );
 /* Adding banner */
 add_action( 'admin_notices', 'pntrst_admin_notices' );
+/* end ##*/

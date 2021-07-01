@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 4.5
-Tested up to: 5.5.1
-Stable tag: 1.1.3
+Tested up to: 5.7.2
+Stable tag: 1.1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,8 @@ Add Pinterest Follow, Save buttons and profile widgets (Pin, Board, Profile) to 
 BestWebSoft’s Pinterest plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your Wordpress website. Plugin has simple settings and includes shortcodes.
 
 Customize the appearance, configure settings, and get more social traffic to your website!
+
+[View Demo](https://bestwebsoft.com/demo-bestwebsofts-pinterest/?ref=readme)
 
 https://www.youtube.com/watch?v=AQJt2aGfNX4
 
@@ -74,9 +76,9 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] How to Use](https://docs.google.com/document/d/1cOVH69e6hW5qwrfkqYbMR6iUOwfK-5P2ptTBwHOR_xI/)
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Doc] User Guide](https://bestwebsoft.com/documentation/bestwebsofts-pinterest/bestwebsofts-pinterest-user-guide/)
+* [[Doc] Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
+* [[Doc] Purchase](https://bestwebsoft.com/documentation/how-to-purchase-a-wordpress-plugin/how-to-purchase-wordpress-plugin-from-bestwebsoft/)
 
 = Help & Support =
 
@@ -121,7 +123,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc)
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/)
 
 == Screenshots ==
 
@@ -134,6 +136,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 7. Adding Pinterest shortcode to your post or page.
 
 == Changelog ==
+
+= V1.1.4 - 01.07.2021 =
+* Bugfix : The bug with displaying the notice when the "Save" and "Follow" buttons are disabled been fixed.
+* Update : All functionality was updated for WordPress 5.7.2.
+* Update : BWS Panel section was updated.
 
 = V1.1.3 - 29.09.2020 =
 * Bugfix : The problem with "Save" button displaying on image hover has been fixed.
@@ -197,6 +204,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.1.4 =
+* Bugs fixed.
+* The compatibility with new WordPress version updated.
 
 = V1.1.3 =
 * Bugs fixed.

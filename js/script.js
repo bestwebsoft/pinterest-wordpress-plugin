@@ -129,7 +129,7 @@
 			dynamicWidgetOptions();
 		});
 
-		$( window ).load(function() {
+		$( document ).ready(function() {
 			dynamicButtonOptions();
 			dynamicWidgetOptions();
 		});

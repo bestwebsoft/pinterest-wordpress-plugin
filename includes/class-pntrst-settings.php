@@ -37,9 +37,9 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				'options' 			 => $pntrst_options,
 				'is_network_options' => is_network_admin(),
 				'tabs' 				 => $tabs,
-				/*pls */
+                'doc_link'			 => 'https://bestwebsoft.com/documentation/bestwebsofts-pinterest/bestwebsofts-pinterest-user-guide/',
+                /*pls */
 				'wp_slug'			 => 'bws-pinterest',
-				'doc_link'			 => 'https://docs.google.com/document/d/1cOVH69e6hW5qwrfkqYbMR6iUOwfK-5P2ptTBwHOR_xI',
 				'link_key' 			 => 'f8f97fcf6a752a73595ec494940c4bb8',
 				'link_pn' 			 => '547'
 				/* pls*/
@@ -59,11 +59,11 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 
 			$message = '';
 
-			if ( empty( $this->options['pinit_before'] ) && empty( $this->options['pinit_after'] ) && empty( $this->options['pinit_hover'] ) ) {
+			if ( ! empty ( $this->options['pinit_save'] ) && empty( $this->options['pinit_before'] ) && empty( $this->options['pinit_after'] ) && empty( $this->options['pinit_hover'] ) ) {
 				$message .= __( '"Save" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' ) . '<br />';
 			}
 
-			if ( empty( $this->options['follow_before'] ) && empty( $this->options['follow_after'] ) ) {
+			if ( ! empty ( $this->options['pinit_follow'] ) && empty( $this->options['follow_before'] ) && empty( $this->options['follow_after'] ) ) {
 				$message .= __( '"Follow" button location is not selected. The button will be displayed only via shortcode.', 'bws-pinterest' );
 			} ?>
 			<div class="updated bws-notice below-h2" <?php if ( empty( $message ) ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
@@ -156,7 +156,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				} else {
 					$error = __( "Can't find upload directory path. Settings are not saved.", 'bws-pinterest-pro' );
 				}
-			} elseif ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $this->options['pinit_custom_image_link'] ) ) {
+            } elseif ( isset( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $_FILES['pntrst-custom-image']['tmp_name'] ) && empty( $this->options['pinit_custom_image_link'] ) && empty( $this->options['pinit_image'] ) ) {
 				$error = __( 'Error: select the upload file', 'bws-pinterest-pro' );
 			}
 
@@ -367,9 +367,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 			</div>
 		<?php }
 
-		/**
-		 *
-		 */
+        /*pls */
 		public function tab_display() { ?>
 			<h3 class="bws_tab_label"><?php _e( 'Display Settings', 'bws-pinterest' ); ?></h3>
 			<?php $this->help_phrase(); ?>
