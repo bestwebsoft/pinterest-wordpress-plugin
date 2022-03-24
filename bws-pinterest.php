@@ -6,7 +6,7 @@ Description: Add Pinterest Follow, Save buttons and profile widgets (Pin, Board,
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.1.4
+Version: 1.1.5
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */

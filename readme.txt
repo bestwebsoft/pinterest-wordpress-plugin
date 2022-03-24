@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 4.5
-Tested up to: 5.7.2
-Stable tag: 1.1.4
+Tested up to: 5.9
+Stable tag: 1.1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -137,6 +137,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.1.5 - 23.03.2021 =
+* Update : All functionality was updated for WordPress 5.7.2.
+* Update : BWS Panel section was updated.
+
 = V1.1.4 - 01.07.2021 =
 * Bugfix : The bug with displaying the notice when the "Save" and "Follow" buttons are disabled been fixed.
 * Update : All functionality was updated for WordPress 5.7.2.
@@ -204,6 +208,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.1.5 =
+* Usability improved.
 
 = V1.1.4 =
 * Bugs fixed.
