@@ -78,6 +78,8 @@
 <p><strong>Pro Features</strong></p>
 <p>All features from Free version included plus:</p>
 <ul>
+<li>Shortcode Account Board</li>
+<li>Pin Boards page. Add a link to an account, board, or image + Board name. Each board is assigned a shortcode</li>
 <li>Display Pinterest buttons for certain pages and/or post types</li>
 <li>Configure all subsites on the network</li>
 <li>Get answer to your support question within one business day (<a href="https://bestwebsoft.com/support-policy/" rel="nofollow ugc">Support Policy</a>)</li>

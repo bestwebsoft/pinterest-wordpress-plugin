@@ -72,27 +72,25 @@
 	 * Checks type of widget(Pin, Board or Profile) and display appropriate options.
 	 */
 	function dynamicWidgetOptions() {
-		$( "div[id*='_pntrst-widget-']" ).each(function () {
+		$( '.pntrst-widget-type' ).each( function () {
 			/* Show/hide options fields depending on selected widget type. Works when widget type select changes */
-			var optionField1 = $( this ).find( ".pntrst-pin-widget-size" );
-			var optionField2 = $( this ).find( ".pntrst-widget-size" );
-			var optionField3 = $( this ).find( ".pntrst-widget-url" );
-			$( this ).find( "select[id*='-pntrst_widget_type']" ).each(function() {
-				$( this ).change(function() {
-					if ( 'embedPin' == $( this ).val() ) {
-						optionField1.show();
-						optionField2.hide();
-						optionField3.show();
+			var optionField1 = $( this ).parents( 'form' ).find( ".pntrst-pin-widget-size" );
+			var optionField2 = $( this ).parents( 'form' ).find( ".pntrst-widget-size" );
+			var optionField3 = $( this ).parents( 'form' ).find( ".pntrst-widget-url" );
+			$( this ).change(function() {
+				if ( 'embedPin' == $( this ).val() ) {
+					optionField1.show();
+					optionField2.hide();
+					optionField3.show();
+				} else {
+					optionField1.hide();
+					optionField2.show();
+					if ( 'embedUser' == $( this ).val() ) {
+						optionField3.hide();
 					} else {
-						optionField1.hide();
-						optionField2.show();
-						if ( 'embedUser' == $( this ).val() ) {
-							optionField3.hide();
-						} else {
-							optionField3.show();
-						}
+						optionField3.show();
 					}
-				});
+				}
 			});
 		});
 	}
@@ -129,9 +127,11 @@
 			dynamicWidgetOptions();
 		});
 
-		$( document ).ready(function() {
-			dynamicButtonOptions();
+		$( '.edit-widgets-block-editor' ).on( 'click', '.wp-block-legacy-widget', function(){
 			dynamicWidgetOptions();
 		});
+
+		dynamicButtonOptions();
+		dynamicWidgetOptions();
 	});
 })( jQuery );
