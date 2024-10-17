@@ -4,7 +4,7 @@
 <p>BestWebSoft’s Pinterest plugin is a useful social solution which adds Pinterest Save button, Follow button, and widgets (Pin, Board, Profile) to your WordPress website. Plugin has simple settings and includes shortcodes.</p>
 <p>Customize the appearance, configure settings, and get more social traffic to your website!</p>
 <p><a href="https://bestwebsoft.com/demo-bestwebsofts-pinterest/?ref=readme" rel="nofollow ugc">View Demo</a></p>
-<p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
+<p></p>
 <h4>Free Features</h4>
 <ul>
 <li>Automatically add Save button:

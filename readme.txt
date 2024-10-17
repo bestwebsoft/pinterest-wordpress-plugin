@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add pin button, add pinterest button, pinterest icon, pinterest, pin, pintrst, pin widget, pinterest profile, pinterest board, pin it, pin it button, pinterest follow button
 Requires at least: 5.6
-Tested up to: 6.4
-Stable tag: 1.1.7
+Tested up to: 6.6.2
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,6 +139,15 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.2.1 - 17.10.2024 =
+* Update : All functionality was updated for WordPress 6.6.2.
+* Bugfix : Minor bugs fixed.
+* Update : Updated bws menu.
+
+= V1.1.8 - 23.05.2024 =
+* Update : All functionality was updated for WordPress 6.5.
+* Bugfix : Security fixes.
+
 = V1.1.7 - 23.01.2024 =
 * Pro : The page with Pinterest boards has been added.
 * Pro : Separate shortcodes for any Pinterest boards, accounts, and pins.
@@ -220,6 +229,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release of Pinterest plugin.
 
 == Upgrade Notice ==
+
+= V1.2.1 =
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
+
+= V1.1.8 =
+* Usability improved.
 
 = V1.1.7  =
 * New features added.

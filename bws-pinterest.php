@@ -6,7 +6,7 @@ Description: Add Pinterest Follow, Save buttons and profile widgets (Pin, Board,
 Author: BestWebSoft
 Text Domain: bws-pinterest
 Domain Path: /languages
-Version: 1.1.7
+Version: 1.2.1
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -28,8 +28,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/* Add plugin BWS menu */
 if ( ! function_exists( 'pntrst_admin_menu' ) ) {
+	/**
+	 * Dashboard menu
+	 */
 	function pntrst_admin_menu() {
 		global $submenu, $pntrst_plugin_info, $wp_version;
 
@@ -48,19 +50,20 @@ if ( ! function_exists( 'pntrst_admin_menu' ) ) {
 		add_action( 'load-' . $settings, 'pntrst_add_tabs' );
 	}
 }
-/* end pntrst_admin_menu ##*/
 
-/**
- * Internationalization
- */
 if ( ! function_exists( 'pntrst_loaded' ) ) {
+	/**
+	 * Internationalization
+	 */
 	function pntrst_loaded() {
 		load_plugin_textdomain( 'bws-pinterest', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 }
 
-/* Plugin init function */
 if ( ! function_exists( 'pntrst_init' ) ) {
+	/**
+	 * Function initialisation plugin for init
+	 */
 	function pntrst_init() {
 		global $bws_plugin_info, $pntrst_plugin_info, $pntrst_lang_codes;
 
@@ -113,8 +116,10 @@ if ( ! function_exists( 'pntrst_init' ) ) {
 	}
 }
 
-/* Function for admin_init */
 if ( ! function_exists( 'pntrst_admin_init' ) ) {
+	/**
+	 * Function initialisation plugin for admin_init
+	 */
 	function pntrst_admin_init() {
 		/* Add variable for bws_menu */
 		global $pagenow, $bws_plugin_info, $pntrst_plugin_info, $bws_shortcode_list, $pntrst_options;
@@ -146,8 +151,10 @@ if ( ! function_exists( 'pntrst_admin_init' ) ) {
 	}
 }
 
-/* Register settings */
 if ( ! function_exists( 'pntrst_register_settings' ) ) {
+	/**
+	 * Register settings function
+	 */
 	function pntrst_register_settings() {
 		global $pntrst_options, $pntrst_plugin_info;
 
@@ -187,8 +194,10 @@ if ( ! function_exists( 'pntrst_register_settings' ) ) {
 	}
 }
 
-/*## Function for activation */
 if ( ! function_exists( 'pntrst_plugin_activate' ) ) {
+	/**
+	 * Activation plugin function
+	 */
 	function pntrst_plugin_activate() {
 		/* registering uninstall hook */
 		if ( is_multisite() ) {
@@ -200,9 +209,13 @@ if ( ! function_exists( 'pntrst_plugin_activate' ) ) {
 		}
 	}
 }
-/* ##*/
 
 if ( ! function_exists( 'pntrst_get_options_default' ) ) {
+	/**
+	 * Fetch plugin default options
+	 *
+	 * @return array
+	 */
 	function pntrst_get_options_default() {
 		global $pntrst_plugin_info;
 
@@ -232,8 +245,10 @@ if ( ! function_exists( 'pntrst_get_options_default' ) ) {
 	}
 }
 
-/*## Plugin's settings page in the admin */
 if ( ! function_exists( 'pntrst_settings_page' ) ) {
+	/**
+	 * Function for display settings page in the admin area
+	 */
 	function pntrst_settings_page() {
 		if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 			require_once dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php';
@@ -258,8 +273,12 @@ if ( ! function_exists( 'pntrst_settings_page' ) ) {
 	}
 }
 
-/* Enqueue plugin scripts and styles for admin ##*/
 if ( ! function_exists( 'pntrst_enqueue' ) ) {
+	/**
+	 * Function for enqueue plugin scripts and styles for admin
+	 *
+	 * @param string $hook File name.
+	 */
 	function pntrst_enqueue( $hook ) {
 		global $pntrst_plugin_info;
 		wp_enqueue_style( 'pntrst_icon', plugins_url( 'css/icon.css', __FILE__ ), false, $pntrst_plugin_info['Version'] );
@@ -278,13 +297,15 @@ if ( ! function_exists( 'pntrst_enqueue' ) ) {
 	}
 }
 
-/* Enqueue plugin scripts and styles */
 if ( ! function_exists( 'pntrst_script_enqueue' ) ) {
+	/**
+	 * Function for enqueue plugin scripts and styles
+	 */
 	function pntrst_script_enqueue() {
 		global $pntrst_options, $pntrst_plugin_info;
 
-		wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ), false, $pntrst_plugin_info['Version'] );
-		wp_enqueue_script( 'pinit.js', '//assets.pinterest.com/js/pinit.js', array(), NULL, true );
+		wp_enqueue_style( 'pntrst_stylesheet', plugins_url( 'css/style.css', __FILE__ ), array(), $pntrst_plugin_info['Version'] );
+		wp_enqueue_script( 'pinit.js', '//assets.pinterest.com/js/pinit.js', array(), null, true );
 
 		if ( empty( $pntrst_options['pinit_image'] ) && ! empty( $pntrst_options['pinit_hover'] ) ) {
 			wp_enqueue_script( 'bws-custom-hover-js', plugins_url( 'js/custom_hover.js', __FILE__ ), array( 'jquery' ), $pntrst_plugin_info['Version'], true );
@@ -294,14 +315,14 @@ if ( ! function_exists( 'pntrst_script_enqueue' ) ) {
 	}
 }
 
-/**
-* Adds async/defer and data attributes to enqueued / registered scripts.
-*
-* @param string $tag    The script tag.
-* @param string $handle The script handle.
-* @return string Script HTML string.
-*/
 if ( ! function_exists( 'pntrst_add_data_to_script' ) ) {
+	/**
+	 * Adds async/defer and data attributes to enqueued / registered scripts.
+	 *
+	 * @param string $tag    The script tag.
+	 * @param string $handle The script handle.
+	 * @return string Script HTML string.
+	 */
 	function pntrst_add_data_to_script( $tag, $handle ) {
 		global $pntrst_options, $pntrst_lang_codes, $mltlngg_current_language;
 
@@ -363,12 +384,17 @@ if ( ! function_exists( 'pntrst_add_data_to_script' ) ) {
 	}
 }
 
-/* Function for display plugin frontend */
 if ( ! function_exists( 'pntrst_frontend' ) ) {
+	/**
+	 * Function for display plugin frontend
+	 *
+	 * @param string $content Content.
+	 */
 	function pntrst_frontend( $content ) {
 		global $pntrst_options;
 		/* Check if custom image. */
-		$before = $after = '';
+		$before = '';
+		$after  = '';
 		if ( ! is_feed() ) {
 			if ( empty( $pntrst_options['pinit_image'] ) ) {
 				$custom   = 'true';
@@ -381,7 +407,8 @@ if ( ! function_exists( 'pntrst_frontend' ) ) {
 				$pinterest_folow_large = ' data-pin-tall="true" ';
 				$style_large_text      = 'pntrst_style_add_large_folow_button';
 			} else {
-				$pinterest_folow_large = $style_large_text = '';
+				$pinterest_folow_large = '';
+				$style_large_text      = '';
 			}
 			$pinit_code  = '<div class="pntrst-button-wrap">
 							<a data-pin-do="buttonBookmark" data-pin-custom="' . $custom . '" href="https://www.pinterest.com/pin/create/button/"><img data-pin-nopin="1" class="pntrst-custom-pin" src="' . esc_url( $img_link ) . '" width="60"></a>
@@ -413,19 +440,25 @@ if ( ! function_exists( 'pntrst_frontend' ) ) {
 }
 
 if ( ! function_exists( 'pntrst_pagination_callback' ) ) {
+	/**
+	 * Function pagination callback
+	 *
+	 * @param string $content Callback content.
+	 * @return string Content for callback.
+	 */
 	function pntrst_pagination_callback( $content ) {
 		$content .= "if ( typeof( PinUtils ) != 'undefined' ) { PinUtils.build(); }";
 		return $content;
 	}
 }
 
-/**
- * Shortcodes
- *
- * Create shortcodes for displaying Pinterest buttons.
- */
- /* Function which create shortcode for Pin It button */
 if ( ! function_exists( 'pntrst_pin_it_shortcode' ) ) {
+	/**
+	 * Function which create shortcode for Pin It button
+	 *
+	 * @param array $atts Array with attr.
+	 * @return string Content for shortcode.
+	 */
 	function pntrst_pin_it_shortcode( $atts ) {
 		global $pntrst_options;
 		$pin_it_atts = shortcode_atts(
@@ -450,8 +483,13 @@ if ( ! function_exists( 'pntrst_pin_it_shortcode' ) ) {
 	}
 }
 
-/* Function which create shortcode for Pinterest Follow button */
 if ( ! function_exists( 'pntrst_pin_follow_shortcode' ) ) {
+	/**
+	 * Function which create shortcode for Pinterest Follow button
+	 *
+	 * @param array $atts Array with attr.
+	 * @return string Content for shortcode.
+	 */
 	function pntrst_pin_follow_shortcode( $atts ) {
 		global $pntrst_options;
 		$pin_follow_atts = shortcode_atts(
@@ -467,259 +505,25 @@ if ( ! function_exists( 'pntrst_pin_follow_shortcode' ) ) {
 	}
 }
 
-/**
- * Pinterest Widget
- *
- * Widget that allows users to add Pinterest Pin, Board and Profile widgets on their site.
- */
-if ( ! class_exists( 'Pinterest_Widget' ) ) {
-	class Pinterest_Widget extends WP_Widget {
-		/**
-		 * Sets up the widget name etc
-		 */
-		public function __construct() {
-			/* widget actual processes */
-			parent::__construct(
-				/*id*/
-				'pntrst-widget',
-				/*name*/
-				__( 'Pinterest Widget', 'bws-pinterest' ),
-				/* Widget description */
-				array(
-					'description' => __( 'Widget for adding Pinterest Pin, Board, and Profile widgets', 'bws-pinterest' ), /* description displayed in admin */
-				)
-			);
-		}
-		/**
-		 * Outputs the content of the widget
-		 */
-		public function widget( $args, $instance ) {
-			global $pntrst_options;
-			if ( empty( $pntrst_options ) ) {
-				pntrst_register_settings();
-			}
-
-			$title            = empty( $instance['pntrst_title'] ) ? '' : apply_filters( 'widget_title', $instance['pntrst_title'], $instance, $this->id_base );
-			$widget_type      = empty( $instance['pntrst_widget_type'] ) ? '' : $instance['pntrst_widget_type'];
-			$widget_url       = empty( $instance['pntrst_widget_url'] ) ? '' : $instance['pntrst_widget_url'];
-			$pin_widget_size  = empty( $instance['pntrst_pin_widget_size'] ) ? '' : $instance['pntrst_pin_widget_size'];
-			$widget_width     = empty( $instance['pntrst_widget_width'] ) ? '' : $instance['pntrst_widget_width'];
-			$widget_height    = empty( $instance['pntrst_widget_height'] ) ? '' : $instance['pntrst_widget_height'];
-			$widget_pin_scale = empty( $instance['pntrst_widget_pin_scale'] ) ? '' : $instance['pntrst_widget_pin_scale'];
-			/* before and after widget arguments are defined by themes */
-			echo wp_kses_post( $args['before_widget'] );
-			if ( ! empty( $title ) ) {
-				echo wp_kses_post( $args['before_title'] ) . esc_html( $title ) . wp_kses_post( $args['after_title'] );
-			}
-			?>
-			<div class="pntrst-widget">
-				<?php if ( 'embedPin' === $widget_type ) { ?>
-					<a data-pin-do="<?php echo esc_attr( $widget_type ); ?>" data-pin-width="<?php echo esc_attr( $pin_widget_size ); ?>" href="<?php echo esc_url( $widget_url ); ?>"></a>
-				<?php } elseif ( 'embedBoard' === $widget_type ) { ?>
-					<a data-pin-do="<?php echo esc_attr( $widget_type ); ?>" data-pin-board-width="<?php echo esc_attr( $widget_width ); ?>" data-pin-scale-height="<?php echo esc_attr( $widget_height ); ?>" data-pin-scale-width="<?php echo esc_attr( $widget_pin_scale ); ?>" href="<?php echo esc_url( $widget_url ); ?>"></a>
-				<?php } elseif ( 'embedUser' === $widget_type ) { ?>
-					<a data-pin-do="<?php echo esc_attr( $widget_type ); ?>" data-pin-board-width="<?php echo esc_attr( $widget_width ); ?>" data-pin-scale-height="<?php echo esc_attr( $widget_height ); ?>" data-pin-scale-width="<?php echo esc_attr( $widget_pin_scale ); ?>" href="https://www.pinterest.com/<?php echo esc_attr( $pntrst_options['profile_url'] ); ?>"></a>
-				<?php } ?>
-			</div>
-			<?php
-			echo wp_kses_post( $args['after_widget'] );
-		}
-		/**
-		 * Outputs the options form on admin
-		 *
-		 * The widget options.
-		 */
-		public function form( $instance ) {
-			global $pntrst_options;
-			if ( empty( $pntrst_options ) ) {
-				pntrst_register_settings();
-			}
-			/* outputs the options form on admin */
-			$instance         = wp_parse_args(
-				(array) $instance,
-				array(
-					'pntrst_title'            => '',
-					'pntrst_widget_type'      => 'embedPin',
-					'pntrst_widget_url'       => '',
-					'pntrst_pin_widget_size'  => '',
-					'pntrst_widget_width'     => '',
-					'pntrst_widget_height'    => '',
-					'pntrst_widget_pin_scale' => '',
-				)
-			);
-			$pntrst_title     = esc_attr( $instance['pntrst_title'] );
-			$widget_type      = esc_attr( $instance['pntrst_widget_type'] );
-			$widget_url       = esc_attr( $instance['pntrst_widget_url'] );
-			$pin_widget_size  = esc_attr( $instance['pntrst_pin_widget_size'] );
-			$widget_width     = esc_attr( $instance['pntrst_widget_width'] );
-			$widget_height    = esc_attr( $instance['pntrst_widget_height'] );
-			$widget_pin_scale = esc_attr( $instance['pntrst_widget_pin_scale'] );
-			?>
-			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_title' ) ); ?>"><?php esc_html_e( 'Title', 'bws-pinterest' ); ?>:</label>
-				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'pntrst_title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_title' ) ); ?>" type="text" value="<?php echo esc_attr( $pntrst_title ); ?>" />
-			</p>
-			<div>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_type' ) ); ?>">
-					<?php esc_html_e( 'Type', 'bws-pinterest' ); ?>:
-					<select id="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_type' ) ); ?>" class="pntrst-widget-type" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_widget_type' ) ); ?>">
-						<option value="embedPin"
-						<?php
-						if ( 'embedPin' === $widget_type ) {
-							echo 'selected="selected"'; }
-						?>
-						><?php esc_html_e( 'Pin Widget', 'bws-pinterest' ); ?></option>
-						<option value="embedBoard"
-						<?php
-						if ( 'embedBoard' === $widget_type ) {
-							echo 'selected="selected"'; }
-						?>
-						><?php esc_html_e( 'Board Widget', 'bws-pinterest' ); ?></option>
-						<option value="embedUser"
-						<?php
-						if ( 'embedUser' === $widget_type ) {
-							echo 'selected="selected"'; }
-						?>
-						><?php esc_html_e( 'Profile Widget', 'bws-pinterest' ); ?></option>
-					</select>
-				</label>
-				<p class="pntrst-widget-url 
-				<?php
-				if ( 'embedUser' === $widget_type ) {
-					echo 'hidden'; }
-				?>
-				">
-					<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_url' ) ); ?>"><?php esc_html_e( 'URL', 'bws-pinterest' ); ?>*:</label>
-					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_widget_url' ) ); ?>" value="<?php echo esc_url( $widget_url ); ?>" />
-					<span class="bws_info">
-						<?php esc_html_e( 'Examples', 'bws-pinterest' ); ?>:<br />
-						<?php esc_html_e( 'Pin Widget', 'bws-pinterest' ); ?>: https://www.pinterest.com/pin/99360735500167749/<br />
-						<?php esc_html_e( 'Board Widget', 'bws-pinterest' ); ?>: https://www.pinterest.com/pinterest/official-news/
-					</span><br />
-				</p>
-				<div class="pntrst-pin-widget-size 
-				<?php
-				if ( 'embedBoard' === $widget_type || 'embedUser' === $widget_type ) {
-					echo 'hidden'; }
-				?>
-				">
-					<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_pin_widget_size' ) ); ?>"><?php esc_html_e( 'Size', 'bws-pinterest' ); ?>:</label>
-					<select id="<?php echo esc_attr( $this->get_field_id( 'pntrst_pin_widget_size' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_pin_widget_size' ) ); ?>">
-						<option value="small"<?php selected( $pin_widget_size, 'small' ); ?>><?php esc_html_e( 'Small', 'bws-pinterest' ); ?></option>
-						<option value="medium"<?php selected( $pin_widget_size, 'medium' ); ?>><?php esc_html_e( 'Medium', 'bws-pinterest' ); ?></option>
-						<option value="large"<?php selected( $pin_widget_size, 'large' ); ?>><?php esc_html_e( 'Large', 'bws-pinterest' ); ?></option>
-					</select>
-				</div>
-				<p class="pntrst-widget-size 
-				<?php
-				if ( 'embedPin' === $widget_type ) {
-					echo 'hidden'; }
-				?>
-				">
-					<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_width' ) ); ?>"><?php esc_html_e( 'Width', 'bws-pinterest' ); ?>:</label>
-					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_width' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_widget_width' ) ); ?>" type="number" value="<?php echo esc_attr( $widget_width ); ?>" />
-					<span class="bws_info">
-						<?php
-						printf(
-							esc_html__( 'Min width%1s. If the widget width field is empty, the thumbnail width will be auto.', 'bws-pinterest' ),
-							': 130px'
-						);
-						?>
-					</span><br />
-					<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_height' ) ); ?>"><?php esc_html_e( 'Height', 'bws-pinterest' ); ?>:</label>
-					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_height' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_widget_height' ) ); ?>" type="number" value="<?php echo esc_attr( $widget_height ); ?>" />
-					<span class="bws_info">
-						<?php
-						printf(
-							esc_html__( 'Min height%1s.', 'bws-pinterest' ),
-							': 60px'
-						);
-						?>
-					</span><br />
-					<label for="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_pin_scale' ) ); ?>"><?php esc_html_e( 'Thumbnails width', 'bws-pinterest' ); ?>:</label>
-					<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'pntrst_widget_pin_scale' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pntrst_widget_pin_scale' ) ); ?>" type="number" value="<?php echo esc_attr( $widget_pin_scale ); ?>" />
-					<span class="bws_info">
-						<?php
-						printf(
-							esc_html__( 'Min width%1s. If the widget width field is empty, the thumbnail width will be auto.', 'bws-pinterest' ),
-							': 60px'
-						);
-						?>
-					</span>
-				</p>
-			</div>
-			<?php
-		}
-		/**
-		 * Processing widget options on save
-		 *
-		 * @param array $new_instance The new options.
-		 * @param array $old_instance The previous options.
-		 */
-		public function update( $new_instance, $old_instance ) {
-			/* processes widget options to be saved */
-			$instance = $old_instance;
-			/* Fields */
-			$instance['pntrst_title'] = sanitize_text_field( $new_instance['pntrst_title'] );
-			if ( 'embedPin' === $new_instance['pntrst_widget_type'] || 'embedBoard' === $new_instance['pntrst_widget_type'] || 'embedUser' === $new_instance['pntrst_widget_type'] ) {
-				$instance['pntrst_widget_type'] = $new_instance['pntrst_widget_type'];
-			}
-			/* Check if user save correct url. Else clean url. */
-			if ( preg_match( '|^http(s)?://(.*)?pinterest(.*)?$|i', trim( $new_instance['pntrst_widget_url'] ) ) ) {
-				$instance['pntrst_widget_url'] = esc_url( trim( $new_instance['pntrst_widget_url'] ) );
-			} else {
-				$instance['pntrst_widget_url'] = '';
-			}
-			/* Check if board or profile widget selected and save widget size options/clean pin widget options. Else clean widget size options and save pin widget options */
-			if ( 'embedPin' !== $new_instance['pntrst_widget_type'] ) {
-				/* clean pin widget size option */
-				$instance['pntrst_pin_widget_size'] = '';
-				/* save board and profile widget size options */
-				if ( empty( $new_instance['pntrst_widget_width'] ) || intval( $new_instance['pntrst_widget_width'] ) < 130 ) {
-					$instance['pntrst_widget_width'] = 130;
-				} elseif ( intval( $new_instance['pntrst_widget_width'] ) > 2000 ) {
-					$instance['pntrst_widget_width'] = 2000;
-				} else {
-					$instance['pntrst_widget_width'] = intval( $new_instance['pntrst_widget_width'] );
-				}
-				if ( empty( $new_instance['pntrst_widget_height'] ) || intval( $new_instance['pntrst_widget_height'] ) < 60 ) {
-					$instance['pntrst_widget_height'] = 60;
-				} elseif ( intval( $new_instance['pntrst_widget_height'] ) > 1500 ) {
-					$instance['pntrst_widget_height'] = 1500;
-				} else {
-					$instance['pntrst_widget_height'] = intval( $new_instance['pntrst_widget_height'] );
-				}
-				if ( empty( $new_instance['pntrst_widget_pin_scale'] ) || intval( $new_instance['pntrst_widget_pin_scale'] ) < 60 ) {
-					$instance['pntrst_widget_pin_scale'] = 60;
-				} elseif ( intval( $new_instance['pntrst_widget_pin_scale'] ) > 2000 ) {
-					$instance['pntrst_widget_pin_scale'] = 2000;
-				} else {
-					$instance['pntrst_widget_pin_scale'] = intval( $new_instance['pntrst_widget_pin_scale'] );
-				}
-			} else {
-				/* save pin widget size option */
-				if ( 'small' === $new_instance['pntrst_pin_widget_size'] || 'medium' === $new_instance['pntrst_pin_widget_size'] || 'large' === $new_instance['pntrst_pin_widget_size'] ) {
-					$instance['pntrst_pin_widget_size'] = $new_instance['pntrst_pin_widget_size'];
-				}
-				/* clean board and profile widget size options */
-				$instance['pntrst_widget_width'] = $instance['pntrst_widget_height'] = $instance['pntrst_widget_pin_scale'] = '';
-			}
-			return $instance;
-		}
-	}
-}
-
-/**
- * Register Widget
- */
 if ( ! function_exists( 'pntrst_widget_register' ) ) {
+	/**
+	 * Register Widget
+	 */
 	function pntrst_widget_register() {
+		if ( ! class_exists( 'Pinterest_Widget' ) ) {
+			require_once dirname( __FILE__ ) . '/includes/class-pinterest-widget.php';
+		}
 		register_widget( 'Pinterest_Widget' );
 	}
 }
 
-/* Function which create shortcode for Pinterest widgets */
 if ( ! function_exists( 'pntrst_widget_shortcode' ) ) {
+	/**
+	 * Function which create shortcode for Pinterest widgets
+	 *
+	 * @param array $atts Array with attr.
+	 * @return string Content for shortcode.
+	 */
 	function pntrst_widget_shortcode( $atts ) {
 		global $pntrst_options;
 		$pin_widget_atts = shortcode_atts(
@@ -743,8 +547,12 @@ if ( ! function_exists( 'pntrst_widget_shortcode' ) ) {
 	}
 }
 
-/* Function which add Pinterest shortcodes in post visual editor */
 if ( ! function_exists( 'pntrst_shortcode_content' ) ) {
+	/**
+	 * Function which add Pinterest shortcodes in post visual editor
+	 *
+	 * @param string $content Sortcode content.
+	 */
 	function pntrst_shortcode_content( $content ) {
 		global $pntrst_options, $wp_version;
 		if ( empty( $pntrst_options ) ) {
@@ -925,8 +733,14 @@ if ( ! function_exists( 'pntrst_shortcode_content' ) ) {
 	}
 }
 
-/*## Functions creates other links on plugins page. */
 if ( ! function_exists( 'pntrst_action_links' ) ) {
+	/**
+	 * Function to handle action links
+	 *
+	 * @param array  $links Links array.
+	 * @param string $file  File name.
+	 * @return array $links
+	 */
 	function pntrst_action_links( $links, $file ) {
 		if ( ! is_network_admin() ) {
 			/* Static so we don't call plugin_basename on every plugin row. */
@@ -943,8 +757,14 @@ if ( ! function_exists( 'pntrst_action_links' ) ) {
 	}
 }
 
-/* Functions creates other links on plugins page. */
 if ( ! function_exists( 'pntrst_links' ) ) {
+	/**
+	 * Function to register plugin links
+	 *
+	 * @param array  $links Links array.
+	 * @param string $file  File name.
+	 * @return array $links
+	 */
 	function pntrst_links( $links, $file ) {
 		$base = plugin_basename( __FILE__ );
 		if ( $file === $base ) {
@@ -959,6 +779,9 @@ if ( ! function_exists( 'pntrst_links' ) ) {
 }
 
 if ( ! function_exists( 'pntrst_admin_notices' ) ) {
+	/**
+	 * Add notises on plugins page
+	 */
 	function pntrst_admin_notices() {
 		global $hook_suffix, $pntrst_plugin_info;
 
@@ -972,8 +795,10 @@ if ( ! function_exists( 'pntrst_admin_notices' ) ) {
 	}
 }
 
-/* add help tab */
 if ( ! function_exists( 'pntrst_add_tabs' ) ) {
+	/**
+	 * Add help tab
+	 */
 	function pntrst_add_tabs() {
 		$screen = get_current_screen();
 		$args   = array(
@@ -984,8 +809,10 @@ if ( ! function_exists( 'pntrst_add_tabs' ) ) {
 	}
 }
 
-/* Function to uninstall Pinterest plugin. */
 if ( ! function_exists( 'pntrst_plugin_uninstall' ) ) {
+	/**
+	 * Function to uninstall Pinterest plugin
+	 */
 	function pntrst_plugin_uninstall() {
 		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';

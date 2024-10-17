@@ -3,7 +3,14 @@
  * Displays the content on the plugin settings page
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
+	/**
+	 * Class Pntrst_Settings_Tabs for display Settings tab
+	 */
 	class Pntrst_Settings_Tabs extends Bws_Settings_Tabs {
 		/**
 		 * Constructor.
@@ -12,7 +19,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		 *
 		 * @see Bws_Settings_Tabs::__construct() for more information on default arguments.
 		 *
-		 * @param string $plugin_basename
+		 * @param string $plugin_basename Plugin basename.
 		 */
 		public function __construct( $plugin_basename ) {
 			global $pntrst_options, $pntrst_plugin_info;
@@ -48,12 +55,12 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 			add_action( get_parent_class( $this ) . '_additional_misc_options', array( $this, 'additional_misc_options' ) );
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );
 		}
+
 		/**
 		 * Display custom error\message\notice
 		 *
 		 * @access public
-		 * @param  $save_results - array with error\message\notice
-		 * @return void
+		 * @param array $save_results Array with error\message\notice.
 		 */
 		public function display_custom_messages( $save_results ) {
 
@@ -79,13 +86,14 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		 * Save plugin options to the database
 		 *
 		 * @access public
-		 * @param  void
-		 * @return array    The action results
+		 * @return array The action results
 		 */
 		public function save_options() {
 			global $pntrst_lang_codes;
 
-			$message = $notice = $error = '';
+			$message = '';
+			$notice  = '';
+			$error   = '';
 
 			if ( isset( $_POST['pntrst_save_field'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['pntrst_save_field'] ) ), 'pntrst_save_action' ) ) {
 
@@ -119,7 +127,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				}
 
 				$this->options['follow_button_label']      = isset( $_REQUEST['pntrst_follow_button_label'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['pntrst_follow_button_label'] ) ) : '';
-				$this->options['profile_url']              = isset( $_REQUEST['pntrst_profile_url'] ) ? sanitize_text_field( wp_unslash( str_replace( '/', '', $_REQUEST['pntrst_profile_url'] ) ) ) : '';
+				$this->options['profile_url']              = isset( $_REQUEST['pntrst_profile_url'] ) ? str_replace( '/', '', sanitize_text_field( wp_unslash( $_REQUEST['pntrst_profile_url'] ) ) ) : '';
 				$this->options['use_multilanguage_locale'] = isset( $_REQUEST['pntrst_use_multilanguage_locale'] ) ? 1 : 0;
 
 				if ( ( ! empty( $this->options['follow_before'] ) || ! empty( $this->options['follow_after'] ) ) && empty( $this->options['profile_url'] ) ) {
@@ -136,7 +144,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 					if ( false === $upload_dir['error'] ) {
 						/* create image directory in WP /uploads */
 						$pntrst_custom_img_folder = $upload_dir['basedir'] . '/pinterest-image';
-						if ( ( is_dir( $pntrst_custom_img_folder ) || wp_mkdir_p( $pntrst_custom_img_folder, 0755 ) ) && isset( $_FILES['pntrst-custom-image'] ) && empty( $_REQUEST['pntrst_image'] ) && is_uploaded_file( $_FILES['pntrst-custom-image']['tmp_name'] ) ) {
+						if ( ( is_dir( $pntrst_custom_img_folder ) || wp_mkdir_p( $pntrst_custom_img_folder, 0755 ) ) && isset( $_FILES['pntrst-custom-image'] ) && empty( $_REQUEST['pntrst_image'] ) && is_uploaded_file( sanitize_text_field( wp_unslash( $_FILES['pntrst-custom-image']['tmp_name'] ) ) ) ) {
 							$file_name = sanitize_text_field( wp_unslash( $_FILES['pntrst-custom-image']['name'] ) );
 
 							$ext            = substr( $file_name, 1 + strrpos( $file_name, '.' ) );
@@ -181,7 +189,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		}
 
 		/**
-		 *
+		 * Display tab settings
 		 */
 		public function tab_settings() {
 			global $pntrst_lang_codes, $wp_version;
@@ -199,7 +207,7 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 				<tr class="pntrst-profile-url">
 					<th scope="row"><?php esc_html_e( 'Pinterest User ID', 'bws-pinterest' ); ?></th>
 					<td>
-						<input name="pntrst_profile_url" type="text" maxlength="250" value="<?php echo esc_url( $this->options['profile_url'] ); ?>">
+						<input name="pntrst_profile_url" type="text" maxlength="250" value="<?php echo esc_attr( $this->options['profile_url'] ); ?>">
 						<div class="bws_info"><?php esc_html_e( 'Enter your Pinterest user ID. For example, "bestwebsoft".', 'bws-pinterest' ); ?></div>
 					</td>
 				</tr>
@@ -364,8 +372,6 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 		 * Display custom metabox
 		 *
 		 * @access public
-		 * @param  void
-		 * @return array    The action results
 		 */
 		public function display_metabox() {
 			?>
@@ -393,6 +399,9 @@ if ( ! class_exists( 'Pntrst_Settings_Tabs' ) ) {
 			<?php
 		}
 
+		/**
+		 * Display Settings tab
+		 */
 		public function tab_display() {
 			?>
 			<h3 class="bws_tab_label"><?php esc_html_e( 'Display Settings', 'bws-pinterest' ); ?></h3>
